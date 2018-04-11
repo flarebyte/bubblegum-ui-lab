@@ -13,6 +13,7 @@ appHeader =
         , p [ class "subtitle" ]
             [ text "List of widgets"
             ]
+        , p [ class "subtitle" ] []   
         ]
 
 appFooter : Html msg

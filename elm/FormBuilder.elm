@@ -2,9 +2,27 @@ module FormBuilder exposing(createWidgets)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Markdown
 
-createWidgets: Html msg
-createWidgets  =
+type alias Description  = {
+    title: String
+    , comment: String
+}
+
+
+sideDescription: Description -> Html msg
+sideDescription desc =
+    article [ class "message" ]
+        [ div [ class "message-header" ]
+            [ p []
+                [ text desc.title ]
+            ]
+        , div [ class "message-body" ]
+            <| Markdown.toHtml Nothing desc.comment
+        ]
+
+inputWidget: Html msg
+inputWidget  =
     div [ class "field is-grouped is-grouped-multiline" ]
         [ div [ class "control" ]
             [ div [ class "tags has-addons" ]
@@ -23,3 +41,23 @@ createWidgets  =
                 ]
             ]
         ]   
+
+createWidgets: Html msg
+createWidgets  =
+    div [ class "container" ]
+    [
+        div [ class "columns" ]
+        [ div [ class "column" ]
+            [ inputWidget ]
+        , div [ class "column" ]
+            [
+            sideDescription 
+            { title = "Input Widget"
+                , comment = """
+                This is a description of __input__ widget.
+                Brilliant component 
+                """
+                }
+            ]
+        ]
+    ]
