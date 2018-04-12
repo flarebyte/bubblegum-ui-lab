@@ -16880,6 +16880,52 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
+var _flarebyte$bubblegum_ui_lab$FormBuilder$listItem = function (label) {
+	return A2(
+		_elm_lang$html$Html$option,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(label),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$em,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(' Information technology'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader = function (label) {
+	return A2(
+		_elm_lang$html$Html$header,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('card-header'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('card-header-title'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(label),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
 var _flarebyte$bubblegum_ui_lab$FormBuilder$oneTag = function (label) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -16931,173 +16977,179 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('box'),
+		_0: _elm_lang$html$Html_Attributes$class('card'),
 		_1: {ctor: '[]'}
 	},
 	{
 		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('control has-icons-left is-expanded'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$span,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$select,
-									{ctor: '[]'},
-									A2(
-										_elm_lang$core$List$map,
-										function (o) {
-											return A2(
-												_elm_lang$html$Html$option,
-												{ctor: '[]'},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(o),
-													_1: {ctor: '[]'}
-												});
-										},
-										{
-											ctor: '::',
-											_0: 'S3',
-											_1: {
-												ctor: '::',
-												_0: 'SQS',
-												_1: {
-													ctor: '::',
-													_0: 'SNS',
-													_1: {
-														ctor: '::',
-														_0: 'Cognito',
-														_1: {
-															ctor: '::',
-															_0: 'Elastic Cache',
-															_1: {
-																ctor: '::',
-																_0: 'DynamoDB',
-																_1: {ctor: '[]'}
-															}
-														}
-													}
-												}
-											}
-										})),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$span,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$i,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
-											_1: {ctor: '[]'}
-										},
-										{ctor: '[]'}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('control'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$button,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$type_('submit'),
-										_1: {ctor: '[]'}
-									}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Add'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			}),
+		_0: _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader('Tags'),
 		_1: {
 			ctor: '::',
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+					_0: _elm_lang$html$Html_Attributes$class('card-content'),
 					_1: {ctor: '[]'}
 				},
-				A2(
-					_elm_lang$core$List$map,
-					_flarebyte$bubblegum_ui_lab$FormBuilder$oneTag,
-					{
-						ctor: '::',
-						_0: 'S3',
-						_1: {
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
 							ctor: '::',
-							_0: 'SQS',
-							_1: {
-								ctor: '::',
-								_0: 'SNS',
-								_1: {
+							_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
 									ctor: '::',
-									_0: 'Cognito',
+									_0: _elm_lang$html$Html_Attributes$class('control has-icons-left is-expanded'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$span,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$select,
+												{ctor: '[]'},
+												A2(
+													_elm_lang$core$List$map,
+													_flarebyte$bubblegum_ui_lab$FormBuilder$listItem,
+													{
+														ctor: '::',
+														_0: 'S3',
+														_1: {
+															ctor: '::',
+															_0: 'SQS',
+															_1: {
+																ctor: '::',
+																_0: 'SNS',
+																_1: {
+																	ctor: '::',
+																	_0: 'Cognito',
+																	_1: {
+																		ctor: '::',
+																		_0: 'Elastic Cache',
+																		_1: {
+																			ctor: '::',
+																			_0: 'DynamoDB',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													})),
+											_1: {ctor: '[]'}
+										}),
 									_1: {
 										ctor: '::',
-										_0: 'Elastic Cache',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$i,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('control'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$button,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$type_('submit'),
+													_1: {ctor: '[]'}
+												}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Add'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+								_1: {ctor: '[]'}
+							},
+							A2(
+								_elm_lang$core$List$map,
+								_flarebyte$bubblegum_ui_lab$FormBuilder$oneTag,
+								{
+									ctor: '::',
+									_0: 'S3',
+									_1: {
+										ctor: '::',
+										_0: 'SQS',
 										_1: {
 											ctor: '::',
-											_0: 'DynamoDB',
-											_1: {ctor: '[]'}
+											_0: 'SNS',
+											_1: {
+												ctor: '::',
+												_0: 'Cognito',
+												_1: {
+													ctor: '::',
+													_0: 'Elastic Cache',
+													_1: {
+														ctor: '::',
+														_0: 'DynamoDB',
+														_1: {ctor: '[]'}
+													}
+												}
+											}
 										}
 									}
-								}
-							}
-						}
-					})),
+								})),
+						_1: {ctor: '[]'}
+					}
+				}),
 			_1: {ctor: '[]'}
 		}
 	});

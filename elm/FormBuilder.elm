@@ -31,28 +31,45 @@ oneTag label =
                         ]
                     ]
 
+cardHeader:String -> Html msg
+cardHeader label =
+    header [ class "card-header" ]
+                [ p [ class "card-header-title" ]
+                    [ text label ]
+                ]
+
+listItem: String -> Html msg
+listItem label =
+    option [] 
+        [ text label
+          , em []
+        [ text " Information technology" ] ]
+
 tagsWidget: Html msg
 tagsWidget  =
-    div [ class "box"]
-        [ div [ class "field has-addons" ]
-        [ div [ class "control has-icons-left is-expanded" ]
-            [ span [ class "select is-fullwidth" ]
-                [ select []
-                    (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] 
-                    |> List.map (\o -> option [] [ text o ]))
+    div [ class "card"]
+        [   cardHeader "Tags"
+            , div [ class "card-content"]
+            [ div [ class "field has-addons" ]
+                [ div [ class "control has-icons-left is-expanded" ]
+                    [ span [ class "select is-fullwidth" ]
+                        [ select []
+                            (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] 
+                            |> List.map listItem)
+                        ]
+                    , span [ class "icon is-small is-left" ]
+                        [ i [ class "fas fa-tags" ]
+                            []
+                        ]
+                    ]
+                , div [ class "control" ]
+                    [ button [ class "button is-primary", type_ "submit" ]
+                        [ text "Add" ]
+                    ] 
                 ]
-            , span [ class "icon is-small is-left" ]
-                [ i [ class "fas fa-tags" ]
-                    []
-                ]
-            ]
-           , div [ class "control" ]
-            [ button [ class "button is-primary", type_ "submit" ]
-                [ text "Add" ]
-        ] 
-        ]
-        , div [ class "field is-grouped is-grouped-multiline" ]
+            , div [ class "field is-grouped is-grouped-multiline" ]
             (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] |> List.map oneTag)
+            ]   
     ]       
 
 createWidgets: Html msg
