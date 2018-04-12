@@ -20,26 +20,40 @@ sideDescription desc =
             (Markdown.toHtml Nothing desc.comment)
         ]
 
-inputWidget: Html msg
-inputWidget  =
-    div [ class "field is-grouped is-grouped-multiline" ]
-        [ div [ class "control" ]
-            [ div [ class "tags has-addons" ]
-                [ a [ class "tag is-link" ]
-                    [ text "Technology" ]
-                , a [ class "tag is-delete" ]
+oneTag: String -> Html msg
+oneTag label =
+    div [ class "control" ]
+                    [ div [ class "tags has-addons" ]
+                        [ a [ class "tag is-link" ]
+                            [ text label ]
+                        , a [ class "tag is-delete" ]
+                            []
+                        ]
+                    ]
+
+tagsWidget: Html msg
+tagsWidget  =
+    div [ class "box"]
+        [ div [ class "field has-addons" ]
+        [ div [ class "control has-icons-left is-expanded" ]
+            [ span [ class "select is-fullwidth" ]
+                [ select []
+                    (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] 
+                    |> List.map (\o -> option [] [ text o ]))
+                ]
+            , span [ class "icon is-small is-left" ]
+                [ i [ class "fas fa-tags" ]
                     []
                 ]
             ]
-        , div [ class "control" ]
-            [ div [ class "tags has-addons" ]
-                [ a [ class "tag is-link" ]
-                    [ text "CSS" ]
-                , a [ class "tag is-delete" ]
-                    []
-                ]
-            ]
-        ]   
+           , div [ class "control" ]
+            [ button [ class "button is-primary", type_ "submit" ]
+                [ text "Add" ]
+        ] 
+        ]
+        , div [ class "field is-grouped is-grouped-multiline" ]
+            (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] |> List.map oneTag)
+    ]       
 
 createWidgets: Html msg
 createWidgets  =
@@ -47,7 +61,7 @@ createWidgets  =
     [
         div [ class "columns" ]
         [ div [ class "column" ]
-            [ inputWidget ]
+            [ tagsWidget ]
         , div [ class "column" ]
             [
             sideDescription 
@@ -58,7 +72,7 @@ createWidgets  =
         ]
         , div [ class "columns" ]
         [ div [ class "column" ]
-            [ inputWidget ]
+            [ tagsWidget ]
         , div [ class "column" ]
             [
             sideDescription 

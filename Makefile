@@ -15,4 +15,4 @@ js:
 	elm-make $(SRC)/app.elm --output $(BUILD)/app.js
 
 start:
-	cd docs;python -m SimpleHTTPServer 7000
+	cd docs;http-server -p 7002 -c10 -o
