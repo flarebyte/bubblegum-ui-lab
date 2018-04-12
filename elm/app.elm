@@ -72,6 +72,7 @@ view model =
     [ 
       About.appHeader
       , FormBuilder.createWidgets
+      , div [class "container"] [ p [] [ text " ... "] ]
       , About.appFooter
     ]
 

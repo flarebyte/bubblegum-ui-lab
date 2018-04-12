@@ -9,7 +9,6 @@ type alias Description  = {
     , comment: String
 }
 
-
 sideDescription: Description -> Html msg
 sideDescription desc =
     article [ class "message" ]
@@ -18,7 +17,7 @@ sideDescription desc =
                 [ text desc.title ]
             ]
         , div [ class "message-body" ]
-            <| Markdown.toHtml Nothing desc.comment
+            (Markdown.toHtml Nothing desc.comment)
         ]
 
 inputWidget: Html msg
@@ -53,11 +52,19 @@ createWidgets  =
             [
             sideDescription 
             { title = "Input Widget"
-                , comment = """
-                This is a description of __input__ widget.
-                Brilliant component 
-                """
-                }
+            , comment = "This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget."
+            }
+            ]
+        ]
+        , div [ class "columns" ]
+        [ div [ class "column" ]
+            [ inputWidget ]
+        , div [ class "column" ]
+            [
+            sideDescription 
+            { title = "Input Widget"
+            , comment = "This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget."
+            }
             ]
         ]
     ]

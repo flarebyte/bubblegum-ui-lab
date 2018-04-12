@@ -17069,20 +17069,55 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
 						{
 							ctor: '::',
 							_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
-								{title: 'Input Widget', comment: '\n                This is a description of __input__ widget.\n                Brilliant component \n                '}),
+								{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('columns'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('column'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _flarebyte$bubblegum_ui_lab$FormBuilder$inputWidget,
 							_1: {ctor: '[]'}
 						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$p,
-							{ctor: '[]'},
-							{ctor: '[]'}),
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('column'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
+									{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
+								_1: {ctor: '[]'}
+							}),
 						_1: {ctor: '[]'}
 					}
-				}
-			}),
-		_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
 	});
 var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
 	function (a, b) {
@@ -17127,8 +17162,30 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 				_0: _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets,
 				_1: {
 					ctor: '::',
-					_0: _flarebyte$bubblegum_ui_lab$About$appFooter,
-					_1: {ctor: '[]'}
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('container'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(' ... '),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _flarebyte$bubblegum_ui_lab$About$appFooter,
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
