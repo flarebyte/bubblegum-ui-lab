@@ -16901,31 +16901,92 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$listItem = function (label) {
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader = function (label) {
-	return A2(
-		_elm_lang$html$Html$header,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('card-header'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$p,
-				{
+var _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader = F2(
+	function (label, description) {
+		return A2(
+			_elm_lang$html$Html$header,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('card-header'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('card-header-title'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(label),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('card-header-title'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(label),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
+					_0: A2(
+						_elm_lang$html$Html$p,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('has-text-info'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(description),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$a,
+							{
+								ctor: '::',
+								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-label', 'more options'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('card-header-icon'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$href('#'),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('icon'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$i,
+											{
+												ctor: '::',
+												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('fas fa-question-circle'),
+													_1: {ctor: '[]'}
+												}
+											},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
 var _flarebyte$bubblegum_ui_lab$FormBuilder$oneTag = function (label) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -16982,7 +17043,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 	},
 	{
 		ctor: '::',
-		_0: _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader('Tags'),
+		_0: A2(_flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader, 'Tags', 'Specify 8 tags'),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -17057,25 +17118,40 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 									_1: {
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$span,
+											_elm_lang$html$Html$p,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+												_0: _elm_lang$html$Html_Attributes$class('help'),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$i,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
-														_1: {ctor: '[]'}
-													},
-													{ctor: '[]'}),
+												_0: _elm_lang$html$Html$text('This is a help text'),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$i,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
+															_1: {ctor: '[]'}
+														},
+														{ctor: '[]'}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
 								}),
 							_1: {
