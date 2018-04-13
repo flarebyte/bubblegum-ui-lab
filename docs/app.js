@@ -16880,7 +16880,7 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
-var _flarebyte$bubblegum_ui_lab$FormBuilder$listItem = function (label) {
+var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (label) {
 	return A2(
 		_elm_lang$html$Html$option,
 		{ctor: '[]'},
@@ -16901,7 +16901,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$listItem = function (label) {
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader = F2(
+var _flarebyte$bubblegum_ui_lab$TagWidget$cardHeader = F2(
 	function (label, description) {
 		return A2(
 			_elm_lang$html$Html$header,
@@ -16987,7 +16987,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader = F2(
 				}
 			});
 	});
-var _flarebyte$bubblegum_ui_lab$FormBuilder$oneTag = function (label) {
+var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (label) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -17034,7 +17034,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$oneTag = function (label) {
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
+var _flarebyte$bubblegum_ui_lab$TagWidget$create = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
@@ -17043,7 +17043,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 	},
 	{
 		ctor: '::',
-		_0: A2(_flarebyte$bubblegum_ui_lab$FormBuilder$cardHeader, 'Tags', 'Specify 8 tags'),
+		_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Specify 8 tags'),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -17087,7 +17087,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 												{ctor: '[]'},
 												A2(
 													_elm_lang$core$List$map,
-													_flarebyte$bubblegum_ui_lab$FormBuilder$listItem,
+													_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
 													{
 														ctor: '::',
 														_0: 'S3',
@@ -17197,7 +17197,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 							},
 							A2(
 								_elm_lang$core$List$map,
-								_flarebyte$bubblegum_ui_lab$FormBuilder$oneTag,
+								_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
 								{
 									ctor: '::',
 									_0: 'S3',
@@ -17229,6 +17229,11 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget = A2(
 			_1: {ctor: '[]'}
 		}
 	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
+	function (a, b) {
+		return {title: a, comment: b};
+	});
+
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 	return A2(
 		_elm_lang$html$Html$article,
@@ -17299,7 +17304,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
 					},
 					{
 						ctor: '::',
-						_0: _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget,
+						_0: _flarebyte$bubblegum_ui_lab$TagWidget$create,
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -17340,7 +17345,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
 						},
 						{
 							ctor: '::',
-							_0: _flarebyte$bubblegum_ui_lab$FormBuilder$tagsWidget,
+							_0: _flarebyte$bubblegum_ui_lab$TagWidget$create,
 							_1: {ctor: '[]'}
 						}),
 					_1: {
