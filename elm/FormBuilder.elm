@@ -1,4 +1,4 @@
-module FormBuilder exposing(createWidgets)
+module FormBuilder exposing(create, Model)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -8,6 +8,10 @@ import TagWidget
 type alias Description  = {
     title: String
     , comment: String
+}
+
+type alias Model = {
+    tagWidget: TagWidget.Model
 }
 
 sideDescription: Description -> Html msg
@@ -21,13 +25,13 @@ sideDescription desc =
             (Markdown.toHtml Nothing desc.comment)
         ]
 
-createWidgets: Html msg
-createWidgets  =
+create: Model -> Html msg
+create  model =
     div [ class "container" ]
     [
         div [ class "columns" ]
         [ div [ class "column" ]
-            [ TagWidget.create ]
+            [ TagWidget.create model.tagWidget]
         , div [ class "column" ]
             [
             sideDescription 
@@ -38,7 +42,7 @@ createWidgets  =
         ]
         , div [ class "columns" ]
         [ div [ class "column" ]
-            [ TagWidget.create ]
+            [ TagWidget.create model.tagWidget]
         , div [ class "column" ]
             [
             sideDescription 

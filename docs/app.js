@@ -6328,6 +6328,137 @@ var _elm_lang$core$Regex$AtMost = function (a) {
 };
 var _elm_lang$core$Regex$All = {ctor: 'All'};
 
+var _elm_lang$core$Set$foldr = F3(
+	function (f, b, _p0) {
+		var _p1 = _p0;
+		return A3(
+			_elm_lang$core$Dict$foldr,
+			F3(
+				function (k, _p2, b) {
+					return A2(f, k, b);
+				}),
+			b,
+			_p1._0);
+	});
+var _elm_lang$core$Set$foldl = F3(
+	function (f, b, _p3) {
+		var _p4 = _p3;
+		return A3(
+			_elm_lang$core$Dict$foldl,
+			F3(
+				function (k, _p5, b) {
+					return A2(f, k, b);
+				}),
+			b,
+			_p4._0);
+	});
+var _elm_lang$core$Set$toList = function (_p6) {
+	var _p7 = _p6;
+	return _elm_lang$core$Dict$keys(_p7._0);
+};
+var _elm_lang$core$Set$size = function (_p8) {
+	var _p9 = _p8;
+	return _elm_lang$core$Dict$size(_p9._0);
+};
+var _elm_lang$core$Set$member = F2(
+	function (k, _p10) {
+		var _p11 = _p10;
+		return A2(_elm_lang$core$Dict$member, k, _p11._0);
+	});
+var _elm_lang$core$Set$isEmpty = function (_p12) {
+	var _p13 = _p12;
+	return _elm_lang$core$Dict$isEmpty(_p13._0);
+};
+var _elm_lang$core$Set$Set_elm_builtin = function (a) {
+	return {ctor: 'Set_elm_builtin', _0: a};
+};
+var _elm_lang$core$Set$empty = _elm_lang$core$Set$Set_elm_builtin(_elm_lang$core$Dict$empty);
+var _elm_lang$core$Set$singleton = function (k) {
+	return _elm_lang$core$Set$Set_elm_builtin(
+		A2(
+			_elm_lang$core$Dict$singleton,
+			k,
+			{ctor: '_Tuple0'}));
+};
+var _elm_lang$core$Set$insert = F2(
+	function (k, _p14) {
+		var _p15 = _p14;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A3(
+				_elm_lang$core$Dict$insert,
+				k,
+				{ctor: '_Tuple0'},
+				_p15._0));
+	});
+var _elm_lang$core$Set$fromList = function (xs) {
+	return A3(_elm_lang$core$List$foldl, _elm_lang$core$Set$insert, _elm_lang$core$Set$empty, xs);
+};
+var _elm_lang$core$Set$map = F2(
+	function (f, s) {
+		return _elm_lang$core$Set$fromList(
+			A2(
+				_elm_lang$core$List$map,
+				f,
+				_elm_lang$core$Set$toList(s)));
+	});
+var _elm_lang$core$Set$remove = F2(
+	function (k, _p16) {
+		var _p17 = _p16;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A2(_elm_lang$core$Dict$remove, k, _p17._0));
+	});
+var _elm_lang$core$Set$union = F2(
+	function (_p19, _p18) {
+		var _p20 = _p19;
+		var _p21 = _p18;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A2(_elm_lang$core$Dict$union, _p20._0, _p21._0));
+	});
+var _elm_lang$core$Set$intersect = F2(
+	function (_p23, _p22) {
+		var _p24 = _p23;
+		var _p25 = _p22;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A2(_elm_lang$core$Dict$intersect, _p24._0, _p25._0));
+	});
+var _elm_lang$core$Set$diff = F2(
+	function (_p27, _p26) {
+		var _p28 = _p27;
+		var _p29 = _p26;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A2(_elm_lang$core$Dict$diff, _p28._0, _p29._0));
+	});
+var _elm_lang$core$Set$filter = F2(
+	function (p, _p30) {
+		var _p31 = _p30;
+		return _elm_lang$core$Set$Set_elm_builtin(
+			A2(
+				_elm_lang$core$Dict$filter,
+				F2(
+					function (k, _p32) {
+						return p(k);
+					}),
+				_p31._0));
+	});
+var _elm_lang$core$Set$partition = F2(
+	function (p, _p33) {
+		var _p34 = _p33;
+		var _p35 = A2(
+			_elm_lang$core$Dict$partition,
+			F2(
+				function (k, _p36) {
+					return p(k);
+				}),
+			_p34._0);
+		var p1 = _p35._0;
+		var p2 = _p35._1;
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Set$Set_elm_builtin(p1),
+			_1: _elm_lang$core$Set$Set_elm_builtin(p2)
+		};
+	});
+
 var _elm_lang$virtual_dom$VirtualDom_Debug$wrap;
 var _elm_lang$virtual_dom$VirtualDom_Debug$wrapWithFlags;
 
@@ -8716,121 +8847,6 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
-var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
-var _elm_lang$html$Html_Events$targetChecked = A2(
-	_elm_lang$core$Json_Decode$at,
-	{
-		ctor: '::',
-		_0: 'target',
-		_1: {
-			ctor: '::',
-			_0: 'checked',
-			_1: {ctor: '[]'}
-		}
-	},
-	_elm_lang$core$Json_Decode$bool);
-var _elm_lang$html$Html_Events$targetValue = A2(
-	_elm_lang$core$Json_Decode$at,
-	{
-		ctor: '::',
-		_0: 'target',
-		_1: {
-			ctor: '::',
-			_0: 'value',
-			_1: {ctor: '[]'}
-		}
-	},
-	_elm_lang$core$Json_Decode$string);
-var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
-var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
-var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
-var _elm_lang$html$Html_Events$onFocus = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'focus',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onBlur = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'blur',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
-	_elm_lang$html$Html_Events$defaultOptions,
-	{preventDefault: true});
-var _elm_lang$html$Html_Events$onSubmit = function (msg) {
-	return A3(
-		_elm_lang$html$Html_Events$onWithOptions,
-		'submit',
-		_elm_lang$html$Html_Events$onSubmitOptions,
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onCheck = function (tagger) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'change',
-		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
-};
-var _elm_lang$html$Html_Events$onInput = function (tagger) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'input',
-		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
-};
-var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseout',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseover',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseleave',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseenter',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseup',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mousedown',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'dblclick',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onClick = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'click',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$Options = F2(
-	function (a, b) {
-		return {stopPropagation: a, preventDefault: b};
-	});
-
 var _elm_lang$http$Native_Http = function() {
 
 
@@ -9312,11 +9328,6 @@ var _flarebyte$bubblegum_ui_lab$About$appHeader = A2(
 			}
 		}
 	});
-
-var _flarebyte$bubblegum_ui_lab$AppModel$reset = {counter: 1};
-var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = function (a) {
-	return {counter: a};
-};
 
 var _pablohirafuji$elm_char_codepoint$Char_CodePoint$codePointToKeys = function (codePoint) {
 	var codePoint_ = codePoint - 65536;
@@ -17034,204 +17045,168 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (label) {
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TagWidget$create = A2(
-	_elm_lang$html$Html$div,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('card'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Specify 8 tags'),
-		_1: {
+var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
 			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('card-content'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('control has-icons-left is-expanded'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$span,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$select,
-												{ctor: '[]'},
-												A2(
-													_elm_lang$core$List$map,
-													_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
-													{
-														ctor: '::',
-														_0: 'S3',
-														_1: {
-															ctor: '::',
-															_0: 'SQS',
-															_1: {
-																ctor: '::',
-																_0: 'SNS',
-																_1: {
-																	ctor: '::',
-																	_0: 'Cognito',
-																	_1: {
-																		ctor: '::',
-																		_0: 'Elastic Cache',
-																		_1: {
-																			ctor: '::',
-																			_0: 'DynamoDB',
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																}
-															}
-														}
-													})),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$p,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('help'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('This is a help text'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$i,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
-															_1: {ctor: '[]'}
-														},
-														{ctor: '[]'}),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('control'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$button,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$type_('submit'),
-													_1: {ctor: '[]'}
-												}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Add'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {
+			_0: _elm_lang$html$Html_Attributes$class('card'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Specify 8 tags'),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('card-content'),
+						_1: {ctor: '[]'}
+					},
+					{
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+								_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
 								_1: {ctor: '[]'}
 							},
-							A2(
-								_elm_lang$core$List$map,
-								_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
-								{
-									ctor: '::',
-									_0: 'S3',
-									_1: {
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
 										ctor: '::',
-										_0: 'SQS',
+										_0: _elm_lang$html$Html_Attributes$class('control has-icons-left is-expanded'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$select,
+													{ctor: '[]'},
+													A2(
+														_elm_lang$core$List$map,
+														_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
+														A2(
+															_elm_lang$core$List$map,
+															_elm_lang$core$Tuple$second,
+															_elm_lang$core$Set$toList(model.suggestions)))),
+												_1: {ctor: '[]'}
+											}),
 										_1: {
 											ctor: '::',
-											_0: 'SNS',
+											_0: A2(
+												_elm_lang$html$Html$p,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('help'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('This is a help text'),
+													_1: {ctor: '[]'}
+												}),
 											_1: {
 												ctor: '::',
-												_0: 'Cognito',
-												_1: {
-													ctor: '::',
-													_0: 'Elastic Cache',
-													_1: {
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{
 														ctor: '::',
-														_0: 'DynamoDB',
+														_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
 														_1: {ctor: '[]'}
-													}
-												}
+													},
+													{
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$i,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
+																_1: {ctor: '[]'}
+															},
+															{ctor: '[]'}),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
 											}
 										}
-									}
-								})),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		}
-	});
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('control'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$button,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$type_('submit'),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Add'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+									_1: {ctor: '[]'}
+								},
+								A2(
+									_elm_lang$core$List$map,
+									_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
+									A2(
+										_elm_lang$core$List$map,
+										_elm_lang$core$Tuple$second,
+										_elm_lang$core$Set$toList(model.values)))),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
 var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
+	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F2(
+	function (a, b) {
+		return {values: a, suggestions: b};
 	});
 
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
@@ -17277,55 +17252,15 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
-	_elm_lang$html$Html$div,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('container'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('columns'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('column'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _flarebyte$bubblegum_ui_lab$TagWidget$create,
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('column'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
-								{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			}),
-		_1: {
+var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('container'),
+			_1: {ctor: '[]'}
+		},
+		{
 			ctor: '::',
 			_0: A2(
 				_elm_lang$html$Html$div,
@@ -17345,7 +17280,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
 						},
 						{
 							ctor: '::',
-							_0: _flarebyte$bubblegum_ui_lab$TagWidget$create,
+							_0: _flarebyte$bubblegum_ui_lab$TagWidget$create(model.tagWidget),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -17366,36 +17301,96 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets = A2(
 						_1: {ctor: '[]'}
 					}
 				}),
-			_1: {ctor: '[]'}
-		}
-	});
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('columns'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('column'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _flarebyte$bubblegum_ui_lab$TagWidget$create(model.tagWidget),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('column'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
+										{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
 var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
 	});
-
-var _flarebyte$bubblegum_ui_lab$App$viewValidation = function (model) {
-	var _p0 = _elm_lang$core$Native_Utils.eq(model.password, model.passwordAgain) ? {ctor: '_Tuple2', _0: 'green', _1: 'OK'} : {ctor: '_Tuple2', _0: 'red', _1: 'Passwords do not match!'};
-	var color = _p0._0;
-	var message = _p0._1;
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: color},
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(message),
-			_1: {ctor: '[]'}
-		});
+var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = function (a) {
+	return {tagWidget: a};
 };
+
+var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
+	values: _elm_lang$core$Set$empty,
+	suggestions: _elm_lang$core$Set$fromList(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'a', _1: 'Aphrodite'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'b', _1: 'Apollo'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'c', _1: 'Ares'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'd', _1: 'Artemis'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'e', _1: 'Athena'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		})
+};
+var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
+	counter: 1,
+	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget}
+};
+var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F2(
+	function (a, b) {
+		return {counter: a, formBuilder: b};
+	});
+var _flarebyte$bubblegum_ui_lab$AppModel$SetTagValue = function (a) {
+	return {ctor: 'SetTagValue', _0: a};
+};
+
 var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$section,
@@ -17409,7 +17404,7 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 			_0: _flarebyte$bubblegum_ui_lab$About$appHeader,
 			_1: {
 				ctor: '::',
-				_0: _flarebyte$bubblegum_ui_lab$FormBuilder$createWidgets,
+				_0: _flarebyte$bubblegum_ui_lab$FormBuilder$create(model.formBuilder),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -17442,38 +17437,11 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 };
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
-		var _p1 = msg;
-		switch (_p1.ctor) {
-			case 'Name':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{name: _p1._0});
-			case 'Password':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{password: _p1._0});
-			default:
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{passwordAgain: _p1._0});
-		}
+		var _p0 = msg;
+		return model;
 	});
-var _flarebyte$bubblegum_ui_lab$App$Model = F3(
-	function (a, b, c) {
-		return {name: a, password: b, passwordAgain: c};
-	});
-var _flarebyte$bubblegum_ui_lab$App$model = A3(_flarebyte$bubblegum_ui_lab$App$Model, '', '', '');
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _flarebyte$bubblegum_ui_lab$App$model, view: _flarebyte$bubblegum_ui_lab$App$view, update: _flarebyte$bubblegum_ui_lab$App$update})();
-var _flarebyte$bubblegum_ui_lab$App$PasswordAgain = function (a) {
-	return {ctor: 'PasswordAgain', _0: a};
-};
-var _flarebyte$bubblegum_ui_lab$App$Password = function (a) {
-	return {ctor: 'Password', _0: a};
-};
-var _flarebyte$bubblegum_ui_lab$App$Name = function (a) {
-	return {ctor: 'Name', _0: a};
-};
+	{model: _flarebyte$bubblegum_ui_lab$AppModel$reset, view: _flarebyte$bubblegum_ui_lab$App$view, update: _flarebyte$bubblegum_ui_lab$App$update})();
 
 var Elm = {};
 Elm['App'] = Elm['App'] || {};

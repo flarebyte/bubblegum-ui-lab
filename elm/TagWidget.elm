@@ -1,13 +1,19 @@
-module TagWidget exposing(create)
+module TagWidget exposing(create, Model)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Set exposing(Set)
+import Tuple exposing(first, second)
 
 type alias Description  = {
     title: String
     , comment: String
 }
 
+type alias Model = {
+    values: Set (String, String)
+    , suggestions: Set (String, String)
+}
 
 oneTag: String -> Html msg
 oneTag label =
@@ -42,8 +48,8 @@ listItem label =
           , em []
         [ text " Information technology" ] ]
 
-create: Html msg
-create  =
+create: Model -> Html msg
+create  model =
     div [ class "card"]
         [   cardHeader "Tags" "Specify 8 tags"
             , div [ class "card-content"]
@@ -51,7 +57,9 @@ create  =
                 [ div [ class "control has-icons-left is-expanded" ]
                     [ span [ class "select is-fullwidth" ]
                         [ select []
-                            (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] 
+                            (model.suggestions
+                            |> Set.toList  
+                            |> List.map second
                             |> List.map listItem)
                         ]
                      , p [ class "help" ][ text "This is a help text" ]       
@@ -66,7 +74,10 @@ create  =
                     ]     
                 ]
             , div [ class "field is-grouped is-grouped-multiline" ]
-            (["S3", "SQS", "SNS", "Cognito", "Elastic Cache", "DynamoDB"] |> List.map oneTag)
+            ( model.values
+            |> Set.toList
+            |> List.map second 
+            |> List.map oneTag)
             ]   
     ]       
 
