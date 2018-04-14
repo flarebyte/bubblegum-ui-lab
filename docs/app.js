@@ -17140,7 +17140,19 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (item) {
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon', 'Athena, goddess of wisdom. Though Hercules had an enemy, Hera, on Mount Olympus, he also had a friend. ... Athena, the goddess of wisdom and military victory, and also the patron of the city of Athens, was Hercules\' half-sister. Her parents were Zeus and Metis, a nymph.'),
+								_1: {
+									ctor: '::',
+									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-pos', 'up'),
+									_1: {
+										ctor: '::',
+										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-length', 'large'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
 						},
 						{
 							ctor: '::',

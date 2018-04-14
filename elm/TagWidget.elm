@@ -53,7 +53,10 @@ oneTag: (String, String) -> Html AppMsg
 oneTag item =
     div [ class "control" ]
                     [ div [ class "tags has-addons" ]
-                        [ span [ class "tag is-primary" ]
+                        [ span [ class "tag is-primary"
+                        , attribute "data-balloon" "Athena, goddess of wisdom. Though Hercules had an enemy, Hera, on Mount Olympus, he also had a friend. ... Athena, the goddess of wisdom and military victory, and also the patron of the city of Athens, was Hercules' half-sister. Her parents were Zeus and Metis, a nymph."
+                        , attribute "data-balloon-pos" "up"
+                        , attribute "data-balloon-length" "large"]
                             [ text (second item) ]
                         , button [ class "tag is-delete", onClick (OnDeleteTagValue (first item)) ]
                             []
