@@ -17006,6 +17006,7 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue = {ctor: 'OnAddTagValue'};
 var _flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue = function (a) {
 	return {ctor: 'SetTagValue', _0: a};
 };
@@ -17023,18 +17024,7 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
 			ctor: '::',
 			_0: _elm_lang$html$Html$text(
 				_elm_lang$core$Tuple$second(item)),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$em,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(' Information technology'),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			}
+			_1: {ctor: '[]'}
 		});
 };
 var _flarebyte$bubblegum_ui_lab$TagWidget$cardHeader = F2(
@@ -17286,11 +17276,15 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 												_elm_lang$html$Html$button,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+													_0: _elm_lang$html$Html_Events$onClick(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
 													_1: {
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$type_('submit'),
-														_1: {ctor: '[]'}
+														_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$type_('submit'),
+															_1: {ctor: '[]'}
+														}
 													}
 												},
 												{
@@ -17326,9 +17320,9 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues = F2(
+var _flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey = F2(
 	function (key, model) {
-		var value = A2(
+		var selected = A2(
 			_elm_lang$core$Maybe$withDefault,
 			{ctor: '_Tuple2', _0: '?', _1: '?'},
 			_elm_lang$core$List$head(
@@ -17341,38 +17335,33 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues = F2(
 								key);
 						},
 						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
-		return {
-			values: A2(_elm_lang$core$Set$insert, value, model.values),
-			suggestions: A2(_elm_lang$core$Set$remove, value, model.suggestions)
-		};
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{selected: selected});
 	});
-var _flarebyte$bubblegum_ui_lab$TagWidget$moveValueToSuggestions = F2(
-	function (key, model) {
-		var value = A2(
-			_elm_lang$core$Maybe$withDefault,
-			{ctor: '_Tuple2', _0: '?', _1: '?'},
-			_elm_lang$core$List$head(
-				_elm_lang$core$Set$toList(
-					A2(
-						_elm_lang$core$Set$filter,
-						function (kv) {
-							return _elm_lang$core$Native_Utils.eq(
-								_elm_lang$core$Tuple$first(kv),
-								key);
-						},
-						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
-		return {
-			values: A2(_elm_lang$core$Set$remove, value, model.values),
-			suggestions: A2(_elm_lang$core$Set$insert, value, model.suggestions)
-		};
-	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues = function (model) {
+	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
+		model,
+		{
+			values: A2(_elm_lang$core$Set$insert, model.selected, model.values),
+			suggestions: A2(_elm_lang$core$Set$remove, model.selected, model.suggestions)
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions = function (model) {
+	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
+		model,
+		{
+			values: A2(_elm_lang$core$Set$remove, model.selected, model.values),
+			suggestions: A2(_elm_lang$core$Set$insert, model.selected, model.suggestions)
+		});
+};
 var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
 	});
-var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F2(
-	function (a, b) {
-		return {values: a, suggestions: b};
+var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F4(
+	function (a, b, c, d) {
+		return {header: a, selected: b, values: c, suggestions: d};
 	});
 
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
@@ -17534,25 +17523,32 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
+var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: 'Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
+	header: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
+	selected: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
 	values: _elm_lang$core$Set$empty,
 	suggestions: _elm_lang$core$Set$fromList(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'a', _1: 'Aphrodite'},
+			_0: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'b', _1: 'Apollo'},
+				_0: {ctor: '_Tuple2', _0: 'a', _1: 'Aphrodite'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'c', _1: 'Ares'},
+					_0: {ctor: '_Tuple2', _0: 'b', _1: 'Apollo'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'd', _1: 'Artemis'},
+						_0: {ctor: '_Tuple2', _0: 'c', _1: 'Ares'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'e', _1: 'Athena'},
-							_1: {ctor: '[]'}
+							_0: {ctor: '_Tuple2', _0: 'd', _1: 'Artemis'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'e', _1: 'Athena'},
+								_1: {ctor: '[]'}
+							}
 						}
 					}
 				}
@@ -17609,7 +17605,8 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 									{ctor: '[]'},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text(model.status),
+										_0: _elm_lang$html$Html$text(
+											_elm_lang$core$Tuple$second(model.formBuilder.tagWidget.selected)),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -17627,13 +17624,23 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		return A2(
-			_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-			model,
-			A2(
-				_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-				model.formBuilder,
-				A2(_flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues, _p0._0, model.formBuilder.tagWidget)));
+		if (_p0.ctor === 'SetTagValue') {
+			return A2(
+				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+				model,
+				A2(
+					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+					model.formBuilder,
+					A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget)));
+		} else {
+			return A2(
+				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+				model,
+				A2(
+					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+					model.formBuilder,
+					_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues(model.formBuilder.tagWidget)));
+		}
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(
 	{model: _flarebyte$bubblegum_ui_lab$AppModel$reset, view: _flarebyte$bubblegum_ui_lab$App$view, update: _flarebyte$bubblegum_ui_lab$App$update})();

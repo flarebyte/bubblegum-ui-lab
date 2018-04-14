@@ -1,8 +1,8 @@
-module TagWidget exposing(create, Model, moveValueToSuggestions, moveSuggestionToValues)
+module TagWidget exposing(create, Model, selectFromKey, moveSelectedToSuggestions, moveSelectedToValues)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput)
+import Html.Events exposing (onInput, onClick)
 import Set exposing(Set)
 import Tuple exposing(first, second)
 import AppMsg exposing (..)
@@ -13,27 +13,39 @@ type alias Description  = {
 }
 
 type alias Model = {
-    values: Set (String, String)
+    header: (String, String)
+    , selected: (String, String)
+    , values: Set (String, String)
     , suggestions: Set (String, String)
 }
 
-moveValueToSuggestions: String -> Model -> Model
-moveValueToSuggestions key model =
-    let
-        value = Set.union model.values model.suggestions |> Set.filter (\kv -> first kv == key) |> Set.toList |> List.head |> Maybe.withDefault ("?", "?")
-    in
-        { values = Set.remove value model.values 
-            , suggestions = Set.insert value model.suggestions
+
+moveSelectedToSuggestions:  Model -> Model
+moveSelectedToSuggestions model =
+    if model.selected == model.header then
+        model
+    else    
+        { model |
+            values = Set.remove model.selected model.values 
+            , suggestions = Set.insert model.selected model.suggestions
         }
 
-moveSuggestionToValues: String -> Model -> Model
-moveSuggestionToValues key model =
-    let
-        value = Set.union model.values model.suggestions |> Set.filter (\kv -> first kv == key) |> Set.toList |> List.head |> Maybe.withDefault ("?", "?")
-    in
-        { values = Set.insert value model.values 
-            , suggestions = Set.remove value model.suggestions
+moveSelectedToValues:  Model -> Model
+moveSelectedToValues model =
+    if model.selected == model.header then
+        model
+    else    
+        {   model | 
+            values = Set.insert model.selected model.values 
+            , suggestions = Set.remove model.selected model.suggestions
         }
+
+selectFromKey: String -> Model -> Model
+selectFromKey key model =
+    let
+        selected = Set.union model.values model.suggestions |> Set.filter (\kv -> first kv == key) |> Set.toList |> List.head |> Maybe.withDefault ("?", "?")
+    in
+        { model | selected = selected }
 
 
 
@@ -66,9 +78,7 @@ cardHeader label description =
 listItem: (String, String) -> Html msg
 listItem item =
     option [value (first item)] 
-        [ text (second item)
-          , em []
-        [ text " Information technology" ] ]
+        [ text (second item) ]
 
 create: Model -> Html AppMsg
 create  model =
@@ -90,7 +100,7 @@ create  model =
                         ]
                     ]
                 , div [ class "control" ]
-                    [ button [ class "button is-primary", type_ "submit" ]
+                    [ button [ onClick OnAddTagValue, class "button is-primary", type_ "submit" ]
                         [ text "Add" ]
                     ]     
                 ]

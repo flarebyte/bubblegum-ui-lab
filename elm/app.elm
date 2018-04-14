@@ -30,9 +30,14 @@ update : AppMsg -> AppModel -> AppModel
 update msg model =
   case msg of
     SetTagValue name ->
-        moveSuggestionToValues name model.formBuilder.tagWidget 
-        |> asTagWidgetIn model.formBuilder
-        |> asFormBuilderIn model
+      selectFromKey name model.formBuilder.tagWidget 
+      |> asTagWidgetIn model.formBuilder
+      |> asFormBuilderIn model
+    OnAddTagValue ->
+      moveSelectedToValues model.formBuilder.tagWidget 
+      |> asTagWidgetIn model.formBuilder
+      |> asFormBuilderIn model
+      
 
 -- VIEW
 
@@ -43,6 +48,6 @@ view model =
     [ 
       About.appHeader
       , FormBuilder.create model.formBuilder
-      , div [class "container"] [ p [] [ text " ... "], p [] [ text model.status] ]
+      , div [class "container"] [ p [] [ text " ... "], p [] [ text (Tuple.second model.formBuilder.tagWidget.selected)] ]
       , About.appFooter
     ]
