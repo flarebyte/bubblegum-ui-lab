@@ -8847,6 +8847,121 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
+var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
+var _elm_lang$html$Html_Events$targetChecked = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'checked',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$bool);
+var _elm_lang$html$Html_Events$targetValue = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'value',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$string);
+var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
+var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
+var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
+var _elm_lang$html$Html_Events$onFocus = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'focus',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onBlur = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'blur',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
+	_elm_lang$html$Html_Events$defaultOptions,
+	{preventDefault: true});
+var _elm_lang$html$Html_Events$onSubmit = function (msg) {
+	return A3(
+		_elm_lang$html$Html_Events$onWithOptions,
+		'submit',
+		_elm_lang$html$Html_Events$onSubmitOptions,
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onCheck = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'change',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
+};
+var _elm_lang$html$Html_Events$onInput = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'input',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
+};
+var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseout',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseover',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseleave',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseenter',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseup',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mousedown',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'dblclick',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'click',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$Options = F2(
+	function (a, b) {
+		return {stopPropagation: a, preventDefault: b};
+	});
+
 var _elm_lang$http$Native_Http = function() {
 
 
@@ -16891,6 +17006,10 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
+var _flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue = function (a) {
+	return {ctor: 'SetTagValue', _0: a};
+};
+
 var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (label) {
 	return A2(
 		_elm_lang$html$Html$option,
@@ -17096,7 +17215,11 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 												ctor: '::',
 												_0: A2(
 													_elm_lang$html$Html$select,
-													{ctor: '[]'},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue),
+														_1: {ctor: '[]'}
+													},
 													A2(
 														_elm_lang$core$List$map,
 														_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
@@ -17200,6 +17323,20 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 			}
 		});
 };
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues = F2(
+	function (value, model) {
+		return {
+			values: A2(_elm_lang$core$Set$insert, value, model.values),
+			suggestions: A2(_elm_lang$core$Set$remove, value, model.suggestions)
+		};
+	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveValueToSuggestions = F2(
+	function (value, model) {
+		return {
+			values: A2(_elm_lang$core$Set$remove, value, model.values),
+			suggestions: A2(_elm_lang$core$Set$insert, value, model.suggestions)
+		};
+	});
 var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
@@ -17346,6 +17483,13 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 			}
 		});
 };
+var _flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget = F2(
+	function (widget, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{tagWidget: widget});
+	});
+var _flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget);
 var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
@@ -17354,6 +17498,13 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = function (a) {
 	return {tagWidget: a};
 };
 
+var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
+	function (builder, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{formBuilder: builder});
+	});
+var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 	values: _elm_lang$core$Set$empty,
 	suggestions: _elm_lang$core$Set$fromList(
@@ -17381,15 +17532,13 @@ var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 };
 var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
 	counter: 1,
+	status: 'OK',
 	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget}
 };
-var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F2(
-	function (a, b) {
-		return {counter: a, formBuilder: b};
+var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
+	function (a, b, c) {
+		return {counter: a, status: b, formBuilder: c};
 	});
-var _flarebyte$bubblegum_ui_lab$AppModel$SetTagValue = function (a) {
-	return {ctor: 'SetTagValue', _0: a};
-};
 
 var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 	return A2(
@@ -17424,7 +17573,18 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 									_0: _elm_lang$html$Html$text(' ... '),
 									_1: {ctor: '[]'}
 								}),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$p,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(model.status),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
 						}),
 					_1: {
 						ctor: '::',
@@ -17438,7 +17598,9 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		return model;
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{status: _p0._0});
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(
 	{model: _flarebyte$bubblegum_ui_lab$AppModel$reset, view: _flarebyte$bubblegum_ui_lab$App$view, update: _flarebyte$bubblegum_ui_lab$App$update})();

@@ -12,6 +12,7 @@ import Html.Attributes exposing (..)
 import About as About
 import AppModel exposing (..)
 import FormBuilder
+import AppMsg exposing (..)
 
 
 main =
@@ -24,21 +25,21 @@ main =
 
 -- UPDATE
 
-update : Msg -> AppModel -> AppModel
+update : AppMsg -> AppModel -> AppModel
 update msg model =
   case msg of
     SetTagValue name ->
-      model
+      { model | status = name }
 
 -- VIEW
 
 
-view : AppModel -> Html Msg
+view : AppModel -> Html AppMsg
 view model =
   section [ class "section" ]
     [ 
       About.appHeader
       , FormBuilder.create model.formBuilder
-      , div [class "container"] [ p [] [ text " ... "] ]
+      , div [class "container"] [ p [] [ text " ... "], p [] [ text model.status] ]
       , About.appFooter
     ]

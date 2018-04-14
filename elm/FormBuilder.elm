@@ -1,9 +1,10 @@
-module FormBuilder exposing(create, Model)
+module FormBuilder exposing(create, Model, asTagWidgetIn)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
 import TagWidget
+import AppMsg exposing (..)
 
 type alias Description  = {
     title: String
@@ -13,6 +14,13 @@ type alias Description  = {
 type alias Model = {
     tagWidget: TagWidget.Model
 }
+
+setTagWidget: TagWidget.Model -> Model -> Model
+setTagWidget widget model =
+    { model | tagWidget = widget}
+
+asTagWidgetIn:  Model-> TagWidget.Model -> Model
+asTagWidgetIn  = flip setTagWidget
 
 sideDescription: Description -> Html msg
 sideDescription desc =
@@ -25,7 +33,7 @@ sideDescription desc =
             (Markdown.toHtml Nothing desc.comment)
         ]
 
-create: Model -> Html msg
+create: Model -> Html AppMsg
 create  model =
     div [ class "container" ]
     [

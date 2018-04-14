@@ -1,9 +1,11 @@
-module TagWidget exposing(create, Model)
+module TagWidget exposing(create, Model, moveValueToSuggestions, moveSuggestionToValues)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onInput)
 import Set exposing(Set)
 import Tuple exposing(first, second)
+import AppMsg exposing (..)
 
 type alias Description  = {
     title: String
@@ -14,6 +16,20 @@ type alias Model = {
     values: Set (String, String)
     , suggestions: Set (String, String)
 }
+
+moveValueToSuggestions: (String, String) -> Model -> Model
+moveValueToSuggestions value model =
+    { values = Set.remove value model.values 
+        , suggestions = Set.insert value model.suggestions
+    }
+
+moveSuggestionToValues: (String, String) -> Model -> Model
+moveSuggestionToValues value model =
+    { values = Set.insert value model.values 
+        , suggestions = Set.remove value model.suggestions
+    }
+
+
 
 oneTag: String -> Html msg
 oneTag label =
@@ -48,7 +64,7 @@ listItem label =
           , em []
         [ text " Information technology" ] ]
 
-create: Model -> Html msg
+create: Model -> Html AppMsg
 create  model =
     div [ class "card"]
         [   cardHeader "Tags" "Specify 8 tags"
@@ -56,7 +72,7 @@ create  model =
             [ div [ class "field has-addons" ]
                 [ div [ class "control has-icons-left is-expanded" ]
                     [ span [ class "select is-fullwidth" ]
-                        [ select []
+                        [ select [ onInput SetTagValue]
                             (model.suggestions
                             |> Set.toList  
                             |> List.map second
