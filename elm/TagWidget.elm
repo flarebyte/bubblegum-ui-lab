@@ -49,13 +49,13 @@ selectFromKey key model =
 
 
 
-oneTag: String -> Html msg
-oneTag label =
+oneTag: (String, String) -> Html AppMsg
+oneTag item =
     div [ class "control" ]
                     [ div [ class "tags has-addons" ]
-                        [ a [ class "tag is-link" ]
-                            [ text label ]
-                        , a [ class "tag is-delete" ]
+                        [ span [ class "tag is-primary" ]
+                            [ text (second item) ]
+                        , button [ class "tag is-delete", onClick (OnDeleteTagValue (first item)) ]
                             []
                         ]
                     ]
@@ -107,7 +107,6 @@ create  model =
             , div [ class "field is-grouped is-grouped-multiline" ]
             ( model.values
             |> Set.toList
-            |> List.map second 
             |> List.map oneTag)
             ]   
     ]       

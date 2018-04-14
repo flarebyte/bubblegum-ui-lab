@@ -37,6 +37,11 @@ update msg model =
       moveSelectedToValues model.formBuilder.tagWidget 
       |> asTagWidgetIn model.formBuilder
       |> asFormBuilderIn model
+    OnDeleteTagValue name ->
+      selectFromKey name model.formBuilder.tagWidget 
+      |> moveSelectedToSuggestions 
+      |> asTagWidgetIn model.formBuilder
+      |> asFormBuilderIn model
       
 
 -- VIEW
