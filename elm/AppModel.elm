@@ -24,4 +24,3 @@ setFormBuilder builder model =
 
 asFormBuilderIn:  AppModel-> FormBuilder.Model -> AppModel
 asFormBuilderIn  = flip setFormBuilder
-

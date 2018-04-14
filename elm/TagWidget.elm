@@ -17,17 +17,23 @@ type alias Model = {
     , suggestions: Set (String, String)
 }
 
-moveValueToSuggestions: (String, String) -> Model -> Model
-moveValueToSuggestions value model =
-    { values = Set.remove value model.values 
-        , suggestions = Set.insert value model.suggestions
-    }
+moveValueToSuggestions: String -> Model -> Model
+moveValueToSuggestions key model =
+    let
+        value = Set.union model.values model.suggestions |> Set.filter (\kv -> first kv == key) |> Set.toList |> List.head |> Maybe.withDefault ("?", "?")
+    in
+        { values = Set.remove value model.values 
+            , suggestions = Set.insert value model.suggestions
+        }
 
-moveSuggestionToValues: (String, String) -> Model -> Model
-moveSuggestionToValues value model =
-    { values = Set.insert value model.values 
-        , suggestions = Set.remove value model.suggestions
-    }
+moveSuggestionToValues: String -> Model -> Model
+moveSuggestionToValues key model =
+    let
+        value = Set.union model.values model.suggestions |> Set.filter (\kv -> first kv == key) |> Set.toList |> List.head |> Maybe.withDefault ("?", "?")
+    in
+        { values = Set.insert value model.values 
+            , suggestions = Set.remove value model.suggestions
+        }
 
 
 
@@ -57,10 +63,10 @@ cardHeader label description =
                 ] 
                 ]
 
-listItem: String -> Html msg
-listItem label =
-    option [] 
-        [ text label
+listItem: (String, String) -> Html msg
+listItem item =
+    option [value (first item)] 
+        [ text (second item)
           , em []
         [ text " Information technology" ] ]
 
@@ -75,7 +81,6 @@ create  model =
                         [ select [ onInput SetTagValue]
                             (model.suggestions
                             |> Set.toList  
-                            |> List.map second
                             |> List.map listItem)
                         ]
                      , p [ class "help" ][ text "This is a help text" ]       

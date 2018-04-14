@@ -17010,13 +17010,19 @@ var _flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue = function (a) {
 	return {ctor: 'SetTagValue', _0: a};
 };
 
-var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (label) {
+var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
 	return A2(
 		_elm_lang$html$Html$option,
-		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text(label),
+			_0: _elm_lang$html$Html_Attributes$value(
+				_elm_lang$core$Tuple$first(item)),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				_elm_lang$core$Tuple$second(item)),
 			_1: {
 				ctor: '::',
 				_0: A2(
@@ -17223,10 +17229,7 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 													A2(
 														_elm_lang$core$List$map,
 														_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
-														A2(
-															_elm_lang$core$List$map,
-															_elm_lang$core$Tuple$second,
-															_elm_lang$core$Set$toList(model.suggestions)))),
+														_elm_lang$core$Set$toList(model.suggestions))),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
@@ -17324,14 +17327,40 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 		});
 };
 var _flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues = F2(
-	function (value, model) {
+	function (key, model) {
+		var value = A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '_Tuple2', _0: '?', _1: '?'},
+			_elm_lang$core$List$head(
+				_elm_lang$core$Set$toList(
+					A2(
+						_elm_lang$core$Set$filter,
+						function (kv) {
+							return _elm_lang$core$Native_Utils.eq(
+								_elm_lang$core$Tuple$first(kv),
+								key);
+						},
+						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
 		return {
 			values: A2(_elm_lang$core$Set$insert, value, model.values),
 			suggestions: A2(_elm_lang$core$Set$remove, value, model.suggestions)
 		};
 	});
 var _flarebyte$bubblegum_ui_lab$TagWidget$moveValueToSuggestions = F2(
-	function (value, model) {
+	function (key, model) {
+		var value = A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '_Tuple2', _0: '?', _1: '?'},
+			_elm_lang$core$List$head(
+				_elm_lang$core$Set$toList(
+					A2(
+						_elm_lang$core$Set$filter,
+						function (kv) {
+							return _elm_lang$core$Native_Utils.eq(
+								_elm_lang$core$Tuple$first(kv),
+								key);
+						},
+						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
 		return {
 			values: A2(_elm_lang$core$Set$remove, value, model.values),
 			suggestions: A2(_elm_lang$core$Set$insert, value, model.suggestions)
@@ -17598,9 +17627,13 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		return _elm_lang$core$Native_Utils.update(
+		return A2(
+			_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
 			model,
-			{status: _p0._0});
+			A2(
+				_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+				model.formBuilder,
+				A2(_flarebyte$bubblegum_ui_lab$TagWidget$moveSuggestionToValues, _p0._0, model.formBuilder.tagWidget)));
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(
 	{model: _flarebyte$bubblegum_ui_lab$AppModel$reset, view: _flarebyte$bubblegum_ui_lab$App$view, update: _flarebyte$bubblegum_ui_lab$App$update})();

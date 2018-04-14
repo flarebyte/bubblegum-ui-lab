@@ -11,7 +11,8 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import About as About
 import AppModel exposing (..)
-import FormBuilder
+import FormBuilder exposing(..)
+import TagWidget exposing(..)
 import AppMsg exposing (..)
 
 
@@ -29,7 +30,9 @@ update : AppMsg -> AppModel -> AppModel
 update msg model =
   case msg of
     SetTagValue name ->
-      { model | status = name }
+        moveSuggestionToValues name model.formBuilder.tagWidget 
+        |> asTagWidgetIn model.formBuilder
+        |> asFormBuilderIn model
 
 -- VIEW
 
