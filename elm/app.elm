@@ -29,12 +29,9 @@ main =
 update : AppMsg -> AppModel -> AppModel
 update msg model =
   case msg of
-    SetTagValue name ->
+    OnAddTagValue name ->
       selectFromKey name model.formBuilder.tagWidget 
-      |> asTagWidgetIn model.formBuilder
-      |> asFormBuilderIn model
-    OnAddTagValue ->
-      moveSelectedToValues model.formBuilder.tagWidget 
+      |> moveSelectedToValues
       |> asTagWidgetIn model.formBuilder
       |> asFormBuilderIn model
     OnDeleteTagValue name ->

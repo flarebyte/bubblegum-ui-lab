@@ -8,7 +8,7 @@ type alias AppModel = {
    , formBuilder:  FormBuilder.Model
 }
 
-tagWidgetHeader = ("", "Please select a tag")
+tagWidgetHeader = ("", " Please select a tag")
 tagWidget = { header = tagWidgetHeader, selected = tagWidgetHeader,  values = Set.empty , suggestions = ([tagWidgetHeader, ("a", "Aphrodite"), ("b", "Apollo"), ("c", "Ares"), ("d", "Artemis"), ("e", "Athena")] |> Set.fromList) }
 
 reset: AppModel

@@ -17009,9 +17009,8 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 var _flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue = function (a) {
 	return {ctor: 'OnDeleteTagValue', _0: a};
 };
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue = {ctor: 'OnAddTagValue'};
-var _flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue = function (a) {
-	return {ctor: 'SetTagValue', _0: a};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue = function (a) {
+	return {ctor: 'OnAddTagValue', _0: a};
 };
 
 var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
@@ -17235,7 +17234,7 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 													_elm_lang$html$Html$select,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$SetTagValue),
+														_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
 														_1: {ctor: '[]'}
 													},
 													A2(
@@ -17283,41 +17282,7 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 											}
 										}
 									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('control'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$button,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onClick(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$type_('submit'),
-															_1: {ctor: '[]'}
-														}
-													}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('Add'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
+								_1: {ctor: '[]'}
 							}),
 						_1: {
 							ctor: '::',
@@ -17542,7 +17507,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
-var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: 'Please select a tag'};
+var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 	header: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
 	selected: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
@@ -17643,32 +17608,24 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'SetTagValue':
-				return A2(
-					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-						model.formBuilder,
-						A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget)));
-			case 'OnAddTagValue':
-				return A2(
-					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-						model.formBuilder,
-						_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues(model.formBuilder.tagWidget)));
-			default:
-				return A2(
-					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-					model,
-					A2(
-						_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-						model.formBuilder,
-						_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions(
-							A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
+		if (_p0.ctor === 'OnAddTagValue') {
+			return A2(
+				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+				model,
+				A2(
+					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+					model.formBuilder,
+					_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues(
+						A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
+		} else {
+			return A2(
+				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+				model,
+				A2(
+					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+					model.formBuilder,
+					_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions(
+						A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
 		}
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(

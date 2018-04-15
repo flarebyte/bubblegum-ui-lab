@@ -91,7 +91,7 @@ create  model =
             [ div [ class "field has-addons" ]
                 [ div [ class "control has-icons-left is-expanded" ]
                     [ span [ class "select is-fullwidth" ]
-                        [ select [ onInput SetTagValue]
+                        [ select [ onInput OnAddTagValue]
                             (model.suggestions
                             |> Set.toList  
                             |> List.map listItem)
@@ -102,10 +102,6 @@ create  model =
                             []
                         ]
                     ]
-                , div [ class "control" ]
-                    [ button [ onClick OnAddTagValue, class "button is-primary", type_ "submit" ]
-                        [ text "Add" ]
-                    ]     
                 ]
             , div [ class "field is-grouped is-grouped-multiline" ]
             ( model.values
