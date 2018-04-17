@@ -10,13 +10,14 @@ type alias AppModel = {
 
 tagWidgetHeader = ("", " Please select a tag")
 tagWidget = { header = tagWidgetHeader, selected = tagWidgetHeader,  values = Set.empty , suggestions = ([tagWidgetHeader, ("a", "Aphrodite"), ("b", "Apollo"), ("c", "Ares"), ("d", "Artemis"), ("e", "Athena")] |> Set.fromList) }
+inputWidget = { value= "" }
 
 reset: AppModel
 reset =
     {
        counter = 1
        , status = "OK"
-       , formBuilder = { tagWidget = tagWidget }
+       , formBuilder = { tagWidget = tagWidget , inputWidget = inputWidget}
     }
 
 setFormBuilder: FormBuilder.Model -> AppModel -> AppModel

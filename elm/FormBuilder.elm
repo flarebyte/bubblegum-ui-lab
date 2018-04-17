@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
 import TagWidget
+import InputWidget
 import AppMsg exposing (..)
 
 type alias Description  = {
@@ -13,6 +14,7 @@ type alias Description  = {
 
 type alias Model = {
     tagWidget: TagWidget.Model
+    , inputWidget: InputWidget.Model
 }
 
 setTagWidget: TagWidget.Model -> Model -> Model
@@ -50,7 +52,7 @@ create  model =
         ]
         , div [ class "columns" ]
         [ div [ class "column" ]
-            [ TagWidget.create model.tagWidget]
+            [ InputWidget.create model.inputWidget]
         , div [ class "column" ]
             [
             sideDescription 

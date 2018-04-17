@@ -17262,6 +17262,95 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F4(
 		return {header: a, selected: b, values: c, suggestions: d};
 	});
 
+var _flarebyte$bubblegum_ui_lab$InputWidget$create = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('box'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('field'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$label,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('label'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Label'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('control'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$input,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('input'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$placeholder('Text input'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$type_('text'),
+												_1: {ctor: '[]'}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('help'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('This is a help text'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$InputWidget$Description = F2(
+	function (a, b) {
+		return {title: a, comment: b};
+	});
+var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
+	return {value: a};
+};
+
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 	return A2(
 		_elm_lang$html$Html$article,
@@ -17374,7 +17463,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 							},
 							{
 								ctor: '::',
-								_0: _flarebyte$bubblegum_ui_lab$TagWidget$create(model.tagWidget),
+								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
@@ -17410,9 +17499,10 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
 	});
-var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = function (a) {
-	return {tagWidget: a};
-};
+var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = F2(
+	function (a, b) {
+		return {tagWidget: a, inputWidget: b};
+	});
 
 var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 	function (builder, model) {
@@ -17421,6 +17511,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
+var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 	header: _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader,
@@ -17456,7 +17547,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
 	counter: 1,
 	status: 'OK',
-	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget}
+	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget, inputWidget: _flarebyte$bubblegum_ui_lab$AppModel$inputWidget}
 };
 var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
 	function (a, b, c) {
