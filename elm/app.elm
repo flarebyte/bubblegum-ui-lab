@@ -50,6 +50,6 @@ view model =
     [ 
       About.appHeader
       , FormBuilder.create model.formBuilder
-      , div [class "container"] [ p [] [ text " ... "], p [] [ text (Tuple.second model.formBuilder.tagWidget.selected)] ]
+      , div [class "container"] [ p [] [ text " ... "]]
       , About.appFooter
     ]
