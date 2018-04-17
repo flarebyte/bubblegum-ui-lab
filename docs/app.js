@@ -17029,85 +17029,6 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TagWidget$cardHeader = F2(
-	function (label, description) {
-		return A2(
-			_elm_lang$html$Html$header,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('card-header'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$p,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('card-header-title'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(label),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$p,
-						{
-							ctor: '::',
-							_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-label', 'more options'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('card-header-icon'),
-								_1: {
-									ctor: '::',
-									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-pos', 'up'),
-									_1: {
-										ctor: '::',
-										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-length', 'large'),
-										_1: {
-											ctor: '::',
-											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon', description),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$span,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('icon'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$i,
-										{
-											ctor: '::',
-											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('fas fa-question-circle'),
-												_1: {ctor: '[]'}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
 var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (item) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -17179,120 +17100,120 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('card'),
+			_0: _elm_lang$html$Html_Attributes$class('box'),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
-			_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Tags describing some features of the application.'),
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('field'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$label,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('label'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Tags'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$select,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
+												_elm_lang$core$Set$toList(model.suggestions))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('help'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('This is a help text'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$i,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
 			_1: {
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('card-content'),
+						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
 						_1: {ctor: '[]'}
 					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('control has-icons-left is-expanded'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$select,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
-														_1: {ctor: '[]'}
-													},
-													A2(
-														_elm_lang$core$List$map,
-														_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
-														_elm_lang$core$Set$toList(model.suggestions))),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$p,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('help'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('This is a help text'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$i,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
-																_1: {ctor: '[]'}
-															},
-															{ctor: '[]'}),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-									_1: {ctor: '[]'}
-								},
-								A2(
-									_elm_lang$core$List$map,
-									_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
-									_elm_lang$core$Set$toList(model.values))),
-							_1: {ctor: '[]'}
-						}
-					}),
+					A2(
+						_elm_lang$core$List$map,
+						_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
+						_elm_lang$core$Set$toList(model.values))),
 				_1: {ctor: '[]'}
 			}
 		});
