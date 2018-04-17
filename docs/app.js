@@ -17422,7 +17422,123 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 						},
 						{
 							ctor: '::',
-							_0: _flarebyte$bubblegum_ui_lab$TagWidget$create(model.tagWidget),
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('box'),
+									_1: {ctor: '[]'}
+								},
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									{
+										ctor: '::',
+										_0: _flarebyte$bubblegum_ui_lab$TagWidget$create(model.tagWidget),
+										_1: {ctor: '[]'}
+									},
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										{
+											ctor: '::',
+											_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+											_1: {ctor: '[]'}
+										},
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											{
+												ctor: '::',
+												_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$Basics_ops['++'],
+												{
+													ctor: '::',
+													_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+													_1: {ctor: '[]'}
+												},
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													{
+														ctor: '::',
+														_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+														_1: {ctor: '[]'}
+													},
+													A2(
+														_elm_lang$core$Basics_ops['++'],
+														{
+															ctor: '::',
+															_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+															_1: {ctor: '[]'}
+														},
+														A2(
+															_elm_lang$core$Basics_ops['++'],
+															{
+																ctor: '::',
+																_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																_1: {ctor: '[]'}
+															},
+															A2(
+																_elm_lang$core$Basics_ops['++'],
+																{
+																	ctor: '::',
+																	_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																	_1: {ctor: '[]'}
+																},
+																A2(
+																	_elm_lang$core$Basics_ops['++'],
+																	{
+																		ctor: '::',
+																		_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																		_1: {ctor: '[]'}
+																	},
+																	A2(
+																		_elm_lang$core$Basics_ops['++'],
+																		{
+																			ctor: '::',
+																			_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																			_1: {ctor: '[]'}
+																		},
+																		A2(
+																			_elm_lang$core$Basics_ops['++'],
+																			{
+																				ctor: '::',
+																				_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																				_1: {ctor: '[]'}
+																			},
+																			A2(
+																				_elm_lang$core$Basics_ops['++'],
+																				{
+																					ctor: '::',
+																					_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																					_1: {ctor: '[]'}
+																				},
+																				A2(
+																					_elm_lang$core$Basics_ops['++'],
+																					{
+																						ctor: '::',
+																						_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																						_1: {ctor: '[]'}
+																					},
+																					A2(
+																						_elm_lang$core$Basics_ops['++'],
+																						{
+																							ctor: '::',
+																							_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																							_1: {ctor: '[]'}
+																						},
+																						A2(
+																							_elm_lang$core$Basics_ops['++'],
+																							{
+																								ctor: '::',
+																								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																								_1: {ctor: '[]'}
+																							},
+																							{
+																								ctor: '::',
+																								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																								_1: {ctor: '[]'}
+																							})))))))))))))))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -17443,49 +17559,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 						_1: {ctor: '[]'}
 					}
 				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('columns'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('column'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('column'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
-										{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {ctor: '[]'}
-			}
+			_1: {ctor: '[]'}
 		});
 };
 var _flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget = F2(

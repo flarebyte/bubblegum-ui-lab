@@ -41,18 +41,26 @@ create  model =
     [
         div [ class "columns" ]
         [ div [ class "column" ]
-            [ TagWidget.create model.tagWidget]
-        , div [ class "column" ]
-            [
-            sideDescription 
-            { title = "Input Widget"
-            , comment = "This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget."
-            }
-            ]
-        ]
-        , div [ class "columns" ]
-        [ div [ class "column" ]
-            [ InputWidget.create model.inputWidget]
+            [ div [ class "box" ]
+            (
+                [ TagWidget.create model.tagWidget ]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+                 ++ [InputWidget.create model.inputWidget]
+            )
+            ] 
         , div [ class "column" ]
             [
             sideDescription 
