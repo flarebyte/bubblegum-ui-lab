@@ -17058,60 +17058,53 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$cardHeader = F2(
 						_elm_lang$html$Html$p,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('has-text-info'),
-							_1: {ctor: '[]'}
+							_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-label', 'more options'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('card-header-icon'),
+								_1: {
+									ctor: '::',
+									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-pos', 'up'),
+									_1: {
+										ctor: '::',
+										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-length', 'large'),
+										_1: {
+											ctor: '::',
+											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon', description),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
 						},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(description),
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('icon'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$i,
+										{
+											ctor: '::',
+											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('fas fa-question-circle'),
+												_1: {ctor: '[]'}
+											}
+										},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}),
 							_1: {ctor: '[]'}
 						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$a,
-							{
-								ctor: '::',
-								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-label', 'more options'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('card-header-icon'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$href('#'),
-										_1: {ctor: '[]'}
-									}
-								}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('icon'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$i,
-											{
-												ctor: '::',
-												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('fas fa-question-circle'),
-													_1: {ctor: '[]'}
-												}
-											},
-											{ctor: '[]'}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
+					_1: {ctor: '[]'}
 				}
 			});
 	});
@@ -17191,7 +17184,7 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Specify 8 tags'),
+			_0: A2(_flarebyte$bubblegum_ui_lab$TagWidget$cardHeader, 'Tags', 'Tags describing some features of the application.'),
 			_1: {
 				ctor: '::',
 				_0: A2(

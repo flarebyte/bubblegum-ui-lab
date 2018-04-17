@@ -68,9 +68,12 @@ cardHeader label description =
     header [ class "card-header" ]
                 [ p [ class "card-header-title" ]
                     [ text label ]
-                , p [ class "has-text-info" ]
-                    [ text description ]
-                , a [ attribute "aria-label" "more options", class "card-header-icon", href "#" ]
+                , p [ attribute "aria-label" "more options"
+                    , class "card-header-icon"
+                    , attribute "data-balloon-pos" "up"
+                    , attribute "data-balloon-length" "large"
+                     , attribute "data-balloon" description
+                    ]
                     [ span [ class "icon" ]
                         [ i [ attribute "aria-hidden" "true", class "fas fa-question-circle" ]
                             []
@@ -86,7 +89,7 @@ listItem item =
 create: Model -> Html AppMsg
 create  model =
     div [ class "card"]
-        [   cardHeader "Tags" "Specify 8 tags"
+        [   cardHeader "Tags" "Tags describing some features of the application."
             , div [ class "card-content"]
             [ div [ class "field has-addons" ]
                 [ div [ class "control has-icons-left is-expanded" ]
