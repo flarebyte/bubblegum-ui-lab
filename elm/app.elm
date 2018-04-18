@@ -13,6 +13,7 @@ import About as About
 import AppModel exposing (..)
 import FormBuilder exposing(..)
 import TagWidget exposing(..)
+import AppNavbar
 import AppMsg exposing (..)
 
 
@@ -48,7 +49,7 @@ view : AppModel -> Html AppMsg
 view model =
   section [ class "section" ]
     [ 
-      About.appHeader
+      AppNavbar.create 
       , FormBuilder.create model.formBuilder
       , div [class "container"] [ p [] [ text " ... "]]
       , About.appFooter

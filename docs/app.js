@@ -17628,6 +17628,299 @@ var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
 		return {counter: a, status: b, formBuilder: c};
 	});
 
+var _flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft = F2(
+	function (label, icon) {
+		return A2(
+			_elm_lang$html$Html$a,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('navbar-item'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$href('http://flarebyte.com/'),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$span,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('icon'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$i,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class(
+									A2(_elm_lang$core$Basics_ops['++'], 'fas ', icon)),
+								_1: {ctor: '[]'}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$span,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(label),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$AppNavbar$visualButton = F2(
+	function (label, icon) {
+		return A2(
+			_elm_lang$html$Html$p,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('control'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('https://github.com/flarebyte/bubblegum-ui-lab'),
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$span,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('icon'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$i,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class(
+											A2(_elm_lang$core$Basics_ops['++'], 'fas ', icon)),
+										_1: {ctor: '[]'}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(label),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$AppNavbar$create = A2(
+	_elm_lang$html$Html$nav,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('navbar is-fixed-top'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('navbar-brand'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('navbar-item'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('http://flarebyte.com/'),
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$img,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$alt('Bubblegum: UI Lab logo'),
+								_1: {
+									ctor: '::',
+									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'height', '28'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$src('http://flairbyte.com/flarebyte/en/png/logo/8/logo-8.png'),
+										_1: {
+											ctor: '::',
+											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'width', '112'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('navbar-burger burger'),
+							_1: {
+								ctor: '::',
+								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-target', 'navbarExampleTransparentExample'),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{ctor: '[]'},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{ctor: '[]'},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$span,
+										{ctor: '[]'},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('navbar-menu'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$id('navbarExampleTransparentExample'),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('navbar-start'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft, 'Docs', 'fa-book'),
+							_1: {
+								ctor: '::',
+								_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft, 'Settings', 'fa-cog'),
+								_1: {
+									ctor: '::',
+									_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft, 'Chat', 'fa-comments'),
+									_1: {
+										ctor: '::',
+										_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft, 'Help', 'fa-question'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('navbar-end'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('navbar-item'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('field is-grouped'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Share', 'fa-share-square'),
+												_1: {
+													ctor: '::',
+													_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Account', 'fa-user'),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		}
+	});
+var _flarebyte$bubblegum_ui_lab$AppNavbar$Description = F2(
+	function (a, b) {
+		return {title: a, comment: b};
+	});
+var _flarebyte$bubblegum_ui_lab$AppNavbar$Model = function (a) {
+	return {value: a};
+};
+
 var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$section,
@@ -17638,7 +17931,7 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _flarebyte$bubblegum_ui_lab$About$appHeader,
+			_0: _flarebyte$bubblegum_ui_lab$AppNavbar$create,
 			_1: {
 				ctor: '::',
 				_0: _flarebyte$bubblegum_ui_lab$FormBuilder$create(model.formBuilder),
