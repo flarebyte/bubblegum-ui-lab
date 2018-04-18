@@ -17628,6 +17628,66 @@ var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
 		return {counter: a, status: b, formBuilder: c};
 	});
 
+var _flarebyte$bubblegum_ui_lab$AppNavbar$searchField = A2(
+	_elm_lang$html$Html$div,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('field'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$p,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('control has-icons-left has-icons-right'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('input'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$placeholder('Search documents'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$type_('text'),
+								_1: {ctor: '[]'}
+							}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$span,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$i,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('fas fa-search'),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {ctor: '[]'}
+	});
 var _flarebyte$bubblegum_ui_lab$AppNavbar$visualButtonLeft = F2(
 	function (label, icon) {
 		return A2(
@@ -17741,7 +17801,7 @@ var _flarebyte$bubblegum_ui_lab$AppNavbar$create = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('navbar is-fixed-top'),
+		_0: _elm_lang$html$Html_Attributes$class('navbar is-fixed-top is-black'),
 		_1: {ctor: '[]'}
 	},
 	{
@@ -17896,11 +17956,15 @@ var _flarebyte$bubblegum_ui_lab$AppNavbar$create = A2(
 											},
 											{
 												ctor: '::',
-												_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Share', 'fa-share-square'),
+												_0: _flarebyte$bubblegum_ui_lab$AppNavbar$searchField,
 												_1: {
 													ctor: '::',
-													_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Account', 'fa-user'),
-													_1: {ctor: '[]'}
+													_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Share', 'fa-share-square'),
+													_1: {
+														ctor: '::',
+														_0: A2(_flarebyte$bubblegum_ui_lab$AppNavbar$visualButton, 'Account', 'fa-user'),
+														_1: {ctor: '[]'}
+													}
 												}
 											}),
 										_1: {ctor: '[]'}

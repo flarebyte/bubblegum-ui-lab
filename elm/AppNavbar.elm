@@ -40,9 +40,22 @@ visualButtonLeft label icon =
             [ text label ]
         ]
 
+searchField: Html AppMsg
+searchField =
+    div [ class "field" ]
+        [ p [ class "control has-icons-left has-icons-right" ]
+            [ input [ class "input", placeholder "Search documents", type_ "text" ]
+                []
+            , span [ class "icon is-small is-left" ]
+                [ i [ class "fas fa-search" ]
+                    []
+                ]
+            ]
+        ]
+
 create: Html AppMsg
 create  =
-   nav [ class "navbar is-fixed-top" ]
+   nav [ class "navbar is-fixed-top is-black" ]
     [ div [ class "navbar-brand" ]
         [ a [ class "navbar-item", href "http://flarebyte.com/" ]
             [ img [ alt "Bubblegum: UI Lab logo", attribute "height" "28", src "http://flairbyte.com/flarebyte/en/png/logo/8/logo-8.png", attribute "width" "112" ]
@@ -68,7 +81,8 @@ create  =
             [ div [ class "navbar-item" ]
                 [ div [ class "field is-grouped" ]
                     [ 
-                    visualButton "Share" "fa-share-square"
+                    searchField
+                    , visualButton "Share" "fa-share-square"
                     , visualButton "Account" "fa-user"
                     ]
                 ]
