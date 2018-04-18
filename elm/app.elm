@@ -50,6 +50,7 @@ view model =
   section [ class "section" ]
     [ 
       AppNavbar.create 
+      , div [class "container"] [ p [] [ text " ... "]]
       , FormBuilder.create model.formBuilder
       , div [class "container"] [ p [] [ text " ... "]]
       , About.appFooter

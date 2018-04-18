@@ -26,21 +26,22 @@ asTagWidgetIn  = flip setTagWidget
 
 sideDescription: Description -> Html msg
 sideDescription desc =
-    article [ class "message" ]
-        [ div [ class "message-header" ]
-            [ p []
-                [ text desc.title ]
+    div [ class "box"]
+        [ article [ class "message" ]
+            [ div [ class "message-header" ]
+                [ p []
+                    [ text desc.title ]
+                ]
+            , div [ class "message-body" ]
+                (Markdown.toHtml Nothing desc.comment)
             ]
-        , div [ class "message-body" ]
-            (Markdown.toHtml Nothing desc.comment)
         ]
-
 create: Model -> Html AppMsg
 create  model =
     div [ class "container" ]
     [
         div [ class "columns" ]
-        [ div [ class "column" ]
+        [ div [ class "column is-three-quarters" ]
             [ div [ class "box" ]
             (
                 [ TagWidget.create model.tagWidget ]

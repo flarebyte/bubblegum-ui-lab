@@ -17353,45 +17353,56 @@ var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
 
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 	return A2(
-		_elm_lang$html$Html$article,
+		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('message'),
+			_0: _elm_lang$html$Html_Attributes$class('box is-fixed-top'),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$div,
+				_elm_lang$html$Html$article,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('message-header'),
+					_0: _elm_lang$html$Html_Attributes$class('message'),
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$p,
-						{ctor: '[]'},
+						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(desc.title),
+							_0: _elm_lang$html$Html_Attributes$class('message-header'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(desc.title),
+									_1: {ctor: '[]'}
+								}),
 							_1: {ctor: '[]'}
 						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
+					_1: {
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('message-body'),
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('message-body'),
+								_1: {ctor: '[]'}
+							},
+							A2(_pablohirafuji$elm_markdown$Markdown$toHtml, _elm_lang$core$Maybe$Nothing, desc.comment)),
 						_1: {ctor: '[]'}
-					},
-					A2(_pablohirafuji$elm_markdown$Markdown$toHtml, _elm_lang$core$Maybe$Nothing, desc.comment)),
-				_1: {ctor: '[]'}
-			}
+					}
+				}),
+			_1: {ctor: '[]'}
 		});
 };
 var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
@@ -17417,7 +17428,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('column'),
+							_0: _elm_lang$html$Html_Attributes$class('column is-three-quarters'),
 							_1: {ctor: '[]'}
 						},
 						{
@@ -17998,32 +18009,54 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 			_0: _flarebyte$bubblegum_ui_lab$AppNavbar$create,
 			_1: {
 				ctor: '::',
-				_0: _flarebyte$bubblegum_ui_lab$FormBuilder$create(model.formBuilder),
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('container'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(' ... '),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}),
 				_1: {
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('container'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(' ... '),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}),
+					_0: _flarebyte$bubblegum_ui_lab$FormBuilder$create(model.formBuilder),
 					_1: {
 						ctor: '::',
-						_0: _flarebyte$bubblegum_ui_lab$About$appFooter,
-						_1: {ctor: '[]'}
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('container'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$p,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(' ... '),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: _flarebyte$bubblegum_ui_lab$About$appFooter,
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
