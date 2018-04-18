@@ -19,7 +19,7 @@ type alias Model = {
 
 create: Model -> Html AppMsg
 create  model =
-    div [ class "box"]
+    div [ class "box is-marginless is-paddingless is-shadowless"]
             [ div [ class "field" ]
                 [ label [ class "label" ]
                     [ text "Label" ]

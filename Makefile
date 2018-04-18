@@ -11,6 +11,7 @@ build: build-directory html js
 
 html:
 	cp $(HTML)/index.html $(BUILD)/index.html
+	cp $(HTML)/styles.css $(BUILD)/styles.css
 js:
 	elm-make $(SRC)/app.elm --output $(BUILD)/app.js
 

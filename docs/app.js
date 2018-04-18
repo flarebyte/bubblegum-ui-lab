@@ -17267,7 +17267,7 @@ var _flarebyte$bubblegum_ui_lab$InputWidget$create = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box'),
+			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -17661,19 +17661,7 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 									_0: _elm_lang$html$Html$text(' ... '),
 									_1: {ctor: '[]'}
 								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$p,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_elm_lang$core$Tuple$second(model.formBuilder.tagWidget.selected)),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
+							_1: {ctor: '[]'}
 						}),
 					_1: {
 						ctor: '::',
