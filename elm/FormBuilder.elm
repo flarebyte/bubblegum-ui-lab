@@ -1,10 +1,11 @@
-module FormBuilder exposing(create, Model, asTagWidgetIn)
+module FormBuilder exposing(create, Model, asTagWidgetIn, asTextAreaWidgetIn)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
 import TagWidget
 import InputWidget
+import TextAreaWidget
 import AppMsg exposing (..)
 
 type alias Description  = {
@@ -15,6 +16,7 @@ type alias Description  = {
 type alias Model = {
     tagWidget: TagWidget.Model
     , inputWidget: InputWidget.Model
+    , textAreaWidget: TextAreaWidget.Model
 }
 
 setTagWidget: TagWidget.Model -> Model -> Model
@@ -23,6 +25,13 @@ setTagWidget widget model =
 
 asTagWidgetIn:  Model-> TagWidget.Model -> Model
 asTagWidgetIn  = flip setTagWidget
+
+setTextAreaWidget: TextAreaWidget.Model -> Model -> Model
+setTextAreaWidget widget model =
+    { model | textAreaWidget = widget}
+
+asTextAreaWidgetIn:  Model-> TextAreaWidget.Model -> Model
+asTextAreaWidgetIn  = flip setTextAreaWidget
 
 sideDescription: Description -> Html msg
 sideDescription desc =
@@ -48,7 +57,8 @@ create  model =
                  ++ [InputWidget.create model.inputWidget]
                  ++ [InputWidget.create model.inputWidget]
                  ++ [InputWidget.create model.inputWidget]
-                 ++ [InputWidget.create model.inputWidget]
+                 ++ [TextAreaWidget.create model.textAreaWidget]
+                 ++ [TextAreaWidget.create model.textAreaWidget]
                  ++ [InputWidget.create model.inputWidget]
                  ++ [InputWidget.create model.inputWidget]
                  ++ [InputWidget.create model.inputWidget]

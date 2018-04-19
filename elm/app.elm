@@ -13,6 +13,7 @@ import About as About
 import AppModel exposing (..)
 import FormBuilder exposing(..)
 import TagWidget exposing(..)
+import TextAreaWidget exposing(..)
 import AppNavbar
 import AppMsg exposing (..)
 
@@ -40,7 +41,15 @@ update msg model =
       |> moveSelectedToSuggestions 
       |> asTagWidgetIn model.formBuilder
       |> asFormBuilderIn model
-      
+    OnChangeTextArea value ->
+      setTextArea value model.formBuilder.textAreaWidget 
+      |> asTextAreaWidgetIn model.formBuilder
+      |> asFormBuilderIn model
+    OnToggleTextAreaEdit ->
+      toggleEditMode model.formBuilder.textAreaWidget 
+      |> asTextAreaWidgetIn model.formBuilder
+      |> asFormBuilderIn model
+            
 
 -- VIEW
 

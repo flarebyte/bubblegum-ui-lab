@@ -7,11 +7,6 @@ import Set exposing(Set)
 import Tuple exposing(first, second)
 import AppMsg exposing (..)
 
-type alias Description  = {
-    title: String
-    , comment: String
-}
-
 type alias Model = {
     value: String
  }

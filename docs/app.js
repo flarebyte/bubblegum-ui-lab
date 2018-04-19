@@ -17006,6 +17006,10 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit = {ctor: 'OnToggleTextAreaEdit'};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea = function (a) {
+	return {ctor: 'OnChangeTextArea', _0: a};
+};
 var _flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue = function (a) {
 	return {ctor: 'OnDeleteTagValue', _0: a};
 };
@@ -17343,20 +17347,155 @@ var _flarebyte$bubblegum_ui_lab$InputWidget$create = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$InputWidget$Description = F2(
-	function (a, b) {
-		return {title: a, comment: b};
-	});
 var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
 	return {value: a};
 };
+
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
+	return A2(
+		_elm_lang$html$Html$button,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('button'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Events$onClick(_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit),
+				_1: {ctor: '[]'}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$span,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$i,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('fas fa-edit'),
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h4,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Description of the feature'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$textarea,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('textarea'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$value(model.value),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h4,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Description of the feature'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$p,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(model.value),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = function (model) {
+	return model.editMode ? _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit(model) : _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView(model);
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleEditMode = function (model) {
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{editMode: !model.editMode});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea = F2(
+	function (text, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{value: text});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F2(
+	function (a, b) {
+		return {value: a, editMode: b};
+	});
 
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box is-fixed-top'),
+			_0: _elm_lang$html$Html_Attributes$class('box'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -17472,14 +17611,14 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 													_elm_lang$core$Basics_ops['++'],
 													{
 														ctor: '::',
-														_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+														_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$create(model.textAreaWidget),
 														_1: {ctor: '[]'}
 													},
 													A2(
 														_elm_lang$core$Basics_ops['++'],
 														{
 															ctor: '::',
-															_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+															_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$create(model.textAreaWidget),
 															_1: {ctor: '[]'}
 														},
 														A2(
@@ -17545,11 +17684,18 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 																								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
 																								_1: {ctor: '[]'}
 																							},
-																							{
-																								ctor: '::',
-																								_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
-																								_1: {ctor: '[]'}
-																							})))))))))))))))),
+																							A2(
+																								_elm_lang$core$Basics_ops['++'],
+																								{
+																									ctor: '::',
+																									_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																									_1: {ctor: '[]'}
+																								},
+																								{
+																									ctor: '::',
+																									_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																									_1: {ctor: '[]'}
+																								}))))))))))))))))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -17573,6 +17719,13 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
+var _flarebyte$bubblegum_ui_lab$FormBuilder$setTextAreaWidget = F2(
+	function (widget, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{textAreaWidget: widget});
+	});
+var _flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$FormBuilder$setTextAreaWidget);
 var _flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget = F2(
 	function (widget, model) {
 		return _elm_lang$core$Native_Utils.update(
@@ -17584,9 +17737,9 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
 	function (a, b) {
 		return {title: a, comment: b};
 	});
-var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = F2(
-	function (a, b) {
-		return {tagWidget: a, inputWidget: b};
+var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = F3(
+	function (a, b, c) {
+		return {tagWidget: a, inputWidget: b, textAreaWidget: c};
 	});
 
 var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
@@ -17596,6 +17749,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
+var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: false};
 var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
@@ -17632,7 +17786,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
 	counter: 1,
 	status: 'OK',
-	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget, inputWidget: _flarebyte$bubblegum_ui_lab$AppModel$inputWidget}
+	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget, inputWidget: _flarebyte$bubblegum_ui_lab$AppModel$inputWidget, textAreaWidget: _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget}
 };
 var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
 	function (a, b, c) {
@@ -18065,24 +18219,41 @@ var _flarebyte$bubblegum_ui_lab$App$view = function (model) {
 var _flarebyte$bubblegum_ui_lab$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'OnAddTagValue') {
-			return A2(
-				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-				model,
-				A2(
-					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-					model.formBuilder,
-					_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues(
-						A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
-		} else {
-			return A2(
-				_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
-				model,
-				A2(
-					_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
-					model.formBuilder,
-					_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions(
-						A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
+		switch (_p0.ctor) {
+			case 'OnAddTagValue':
+				return A2(
+					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+						model.formBuilder,
+						_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues(
+							A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
+			case 'OnDeleteTagValue':
+				return A2(
+					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn,
+						model.formBuilder,
+						_flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions(
+							A2(_flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey, _p0._0, model.formBuilder.tagWidget))));
+			case 'OnChangeTextArea':
+				return A2(
+					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
+						model.formBuilder,
+						A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea, _p0._0, model.formBuilder.textAreaWidget)));
+			default:
+				return A2(
+					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
+						model.formBuilder,
+						_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleEditMode(model.formBuilder.textAreaWidget)));
 		}
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(
