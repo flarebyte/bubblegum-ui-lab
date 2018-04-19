@@ -2,7 +2,7 @@ module TextAreaWidget exposing(create, Model, setTextArea, toggleEditMode)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput, onClick)
+import Html.Events exposing (onInput, onClick, onMouseEnter, onMouseOut)
 import AppMsg exposing (..)
 import String exposing(lines)
 
@@ -50,7 +50,7 @@ createEdit  model =
 
 createView: Model -> Html AppMsg
 createView  model =
-    div [ class "box is-marginless is-paddingless is-shadowless"]
+    div [ class "box is-marginless is-paddingless is-shadowless", onMouseEnter OnToggleTextAreaEdit ]
         [   h4 [] [ text "Description of the feature"]
             , checkEditMode model
             , renderText model

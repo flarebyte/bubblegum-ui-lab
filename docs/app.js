@@ -17474,7 +17474,11 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = function (model) {
 		{
 			ctor: '::',
 			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Events$onMouseEnter(_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit),
+				_1: {ctor: '[]'}
+			}
 		},
 		{
 			ctor: '::',
@@ -17492,18 +17496,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = function (model) {
 				_1: {
 					ctor: '::',
 					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$p,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(''),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
+					_1: {ctor: '[]'}
 				}
 			}
 		});
