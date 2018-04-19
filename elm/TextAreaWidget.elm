@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 import AppMsg exposing (..)
+import String exposing(lines)
 
 type alias Model = {
     value: String
@@ -28,15 +29,21 @@ checkEditMode model =
             ]
         ]
 
+
+renderText: Model -> Html AppMsg
+renderText model =
+    model.value |> lines |> List.map (\line -> p [] [text line]) |> div []
+
 createEdit: Model -> Html AppMsg
 createEdit  model =
     div [ class "box is-marginless is-paddingless is-shadowless"]
         [   h4 [] [ text "Description of the feature"]
            , checkEditMode model
-           , textarea [ class "textarea"
+           , textarea [ class "textarea is-marginless is-paddingless is-shadowless"
                 , placeholder "e.g. Hello world"
                 , onInput OnChangeTextArea
                 , value model.value
+                , attribute "rows" (model.value |> lines |> List.length |> (+) 1 |> toString )
                ]
             [] 
         ]       
@@ -46,7 +53,7 @@ createView  model =
     div [ class "box is-marginless is-paddingless is-shadowless"]
         [   h4 [] [ text "Description of the feature"]
             , checkEditMode model
-            , p [] [ text model.value ]
+            , renderText model
         ]       
 
 create: Model -> Html AppMsg

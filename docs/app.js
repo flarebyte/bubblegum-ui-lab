@@ -17351,6 +17351,24 @@ var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
 	return {value: a};
 };
 
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			function (line) {
+				return A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(line),
+						_1: {ctor: '[]'}
+					});
+			},
+			_elm_lang$core$String$lines(model.value)));
+};
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
 	return A2(
 		_elm_lang$html$Html$button,
@@ -17414,7 +17432,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = function (model) {
 						_elm_lang$html$Html$textarea,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('textarea'),
+							_0: _elm_lang$html$Html_Attributes$class('textarea is-marginless is-paddingless is-shadowless'),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
@@ -17424,7 +17442,22 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = function (model) {
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$value(model.value),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html_Attributes$attribute,
+												'rows',
+												_elm_lang$core$Basics$toString(
+													A2(
+														F2(
+															function (x, y) {
+																return x + y;
+															}),
+														1,
+														_elm_lang$core$List$length(
+															_elm_lang$core$String$lines(model.value))))),
+											_1: {ctor: '[]'}
+										}
 									}
 								}
 							}
@@ -17458,15 +17491,19 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = function (model) {
 				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
 				_1: {
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$p,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(model.value),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
+					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(''),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
