@@ -50,12 +50,15 @@ toggleMode: EditMode -> Model -> Model
 toggleMode mode model=
     { model | editMode = mode }
 
-iconOnly: String -> Html AppMsg
-iconOnly iconId =
-   span [ class "icon is-small" ]
-            [ i [ class ("fas " ++ iconId) ]
-                []
-            ] 
+textAndIcon: String -> String -> List (Html AppMsg)
+textAndIcon label iconId=
+    [ span [ class "icon is-small" ]
+        [ i [ class ("fas " ++ iconId) ]
+            []
+        ]
+    , span []
+        [ text label ]
+    ]
 
 editModeToClass:  EditMode -> String -> String -> EditMode -> String
 editModeToClass expected whenExpected otherwise actual  =
@@ -73,14 +76,13 @@ editModeToString mode =
 
 checkEditMode: Model -> Html AppMsg
 checkEditMode model =
-    div [ class "buttons has-addons" ]
-        [ button [ class (editModeToClass Viewing "button is-success is-selected" "button" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
-            [ text "Viewing" , iconOnly "fa-edit"]
-        , button [ class (editModeToClass Editing "button is-success is-selected" "button" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
-            [ text "Editing" ]
-        , button [ class (editModeToClass Suggesting "button is-success is-selected" "button" model.editMode), onClick (OnToggleTextAreaMode Suggesting) ]
-            [ text "Suggesting" ]
-        , p [] [ text (editModeToString model.editMode)]
+    div [ class "buttons has-addons is-pulled-right" ]
+        [ button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
+            (textAndIcon "V" "fa-edit")
+        , button [ class (editModeToClass Editing "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
+            (textAndIcon "E" "fa-edit")
+        , button [ class (editModeToClass Suggesting "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Suggesting) ]
+            (textAndIcon "S" "fa-edit")
         ]
 
 renderText: Model -> Html AppMsg
