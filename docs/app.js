@@ -9815,6 +9815,689 @@ var _flarebyte$bubblegum_ui_lab$About$footerLevel = A2(
 	});
 var _flarebyte$bubblegum_ui_lab$About$appFooter = _flarebyte$bubblegum_ui_lab$About$footerLevel;
 
+var _flarebyte$bubblegum_ui_lab$EditMode$Suggesting = {ctor: 'Suggesting'};
+var _flarebyte$bubblegum_ui_lab$EditMode$Editing = {ctor: 'Editing'};
+var _flarebyte$bubblegum_ui_lab$EditMode$Viewing = {ctor: 'Viewing'};
+
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnValidationError = function (a) {
+	return {ctor: 'OnValidationError', _0: a};
+};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode = function (a) {
+	return {ctor: 'OnToggleTextAreaMode', _0: a};
+};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea = function (a) {
+	return {ctor: 'OnChangeTextArea', _0: a};
+};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue = function (a) {
+	return {ctor: 'OnDeleteTagValue', _0: a};
+};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue = function (a) {
+	return {ctor: 'OnAddTagValue', _0: a};
+};
+
+var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
+	return A2(
+		_elm_lang$html$Html$option,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$value(
+				_elm_lang$core$Tuple$first(item)),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				_elm_lang$core$Tuple$second(item)),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (item) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('control'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$span,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
+							_1: {
+								ctor: '::',
+								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon', 'Athena, goddess of wisdom. Though Hercules had an enemy, Hera, on Mount Olympus, he also had a friend. ... Athena, the goddess of wisdom and military victory, and also the patron of the city of Athens, was Hercules\' half-sister. Her parents were Zeus and Metis, a nymph.'),
+								_1: {
+									ctor: '::',
+									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-pos', 'up'),
+									_1: {
+										ctor: '::',
+										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-length', 'large'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								_elm_lang$core$Tuple$second(item)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$button,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue(
+											_elm_lang$core$Tuple$first(item))),
+									_1: {ctor: '[]'}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('box'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('field'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$label,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('label'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Tags'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$select,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
+												_elm_lang$core$Set$toList(model.suggestions))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('help'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('This is a help text'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$i,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+						_1: {ctor: '[]'}
+					},
+					A2(
+						_elm_lang$core$List$map,
+						_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
+						_elm_lang$core$Set$toList(model.values))),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey = F2(
+	function (key, model) {
+		var selected = A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '_Tuple2', _0: '?', _1: '?'},
+			_elm_lang$core$List$head(
+				_elm_lang$core$Set$toList(
+					A2(
+						_elm_lang$core$Set$filter,
+						function (kv) {
+							return _elm_lang$core$Native_Utils.eq(
+								_elm_lang$core$Tuple$first(kv),
+								key);
+						},
+						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{selected: selected});
+	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues = function (model) {
+	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
+		model,
+		{
+			values: A2(_elm_lang$core$Set$insert, model.selected, model.values),
+			suggestions: A2(_elm_lang$core$Set$remove, model.selected, model.suggestions)
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions = function (model) {
+	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
+		model,
+		{
+			values: A2(_elm_lang$core$Set$remove, model.selected, model.values),
+			suggestions: A2(_elm_lang$core$Set$insert, model.selected, model.suggestions)
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
+	function (a, b) {
+		return {title: a, comment: b};
+	});
+var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F4(
+	function (a, b, c, d) {
+		return {header: a, selected: b, values: c, suggestions: d};
+	});
+
+var _flarebyte$bubblegum_ui_lab$InputWidget$create = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('field'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$label,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('label'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Label'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('control'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$input,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('input'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$placeholder('Text input'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$type_('text'),
+												_1: {ctor: '[]'}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('help'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('This is a help text'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
+	return {value: a};
+};
+
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			function (line) {
+				return A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(line),
+						_1: {ctor: '[]'}
+					});
+			},
+			_elm_lang$core$String$lines(model.value)));
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToString = function (mode) {
+	var _p0 = mode;
+	switch (_p0.ctor) {
+		case 'Viewing':
+			return 'Viewing';
+		case 'Editing':
+			return 'Editing';
+		default:
+			return 'Suggesting';
+	}
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass = F4(
+	function (expected, whenExpected, otherwise, actual) {
+		return _elm_lang$core$Native_Utils.eq(actual, expected) ? whenExpected : otherwise;
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon = function (iconId) {
+	return {
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$span,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$i,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(
+							A2(_elm_lang$core$Basics_ops['++'], 'fas ', iconId)),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}),
+		_1: {ctor: '[]'}
+	};
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
+	return A2(
+		_elm_lang$html$Html$span,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('buttons'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class(
+						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(
+							_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
+						_1: {ctor: '[]'}
+					}
+				},
+				_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-eye')),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$button,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(
+							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
+							_1: {ctor: '[]'}
+						}
+					},
+					_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-edit')),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class(
+								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(
+									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
+								_1: {ctor: '[]'}
+							}
+						},
+						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-check')),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode = F2(
+	function (mode, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{editMode: mode});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea = F2(
+	function (text, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{value: text});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel = function (id) {
+	return _elm_lang$core$Native_Utils.cmp(id, 1) > 0;
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$configs = {
+	ctor: '::',
+	_0: {id: 1, title: 'Description of the feature 1'},
+	_1: {
+		ctor: '::',
+		_0: {id: 2, title: 'Description of the feature 2'},
+		_1: {
+			ctor: '::',
+			_0: {id: 3, title: 'Description of the feature 3'},
+			_1: {
+				ctor: '::',
+				_0: {id: 4, title: 'Description of the feature 4'},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig = function (id) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		{id: 1, title: 'Description of the feature'},
+		_elm_lang$core$List$head(
+			A2(
+				_elm_lang$core$List$filter,
+				function (i) {
+					return _elm_lang$core$Native_Utils.eq(i.id, id);
+				},
+				_flarebyte$bubblegum_ui_lab$TextAreaWidget$configs)));
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
+	function (model, id) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h4,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							function (_) {
+								return _.title;
+							}(
+								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$textarea,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('textarea is-marginless is-paddingless is-shadowless'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$value(model.value),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html_Attributes$attribute,
+												'rows',
+												_elm_lang$core$Basics$toString(
+													A2(
+														F2(
+															function (x, y) {
+																return x + y;
+															}),
+														1,
+														_elm_lang$core$List$length(
+															_elm_lang$core$String$lines(model.value))))),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
+	function (model, id) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h4,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							function (_) {
+								return _.title;
+							}(
+								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2 = 'Pellentesque vel aliquam diam. Pellentesque tincidunt posuere libero at congue. Praesent vitae est ex. Cras mauris felis, sollicitudin eu quam non, rhoncus bibendum lectus. Nam id mattis est. Pellentesque pellentesque est elit, sed maximus massa sagittis in. Nullam non blandit neque, sed facilisis turpis. Fusce purus orci, auctor at posuere vel, pharetra at leo. Sed semper nec leo sed hendrerit. Quisque sollicitudin et dui in cursus. Donec vel libero feugiat, iaculis felis ac, condimentum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Vestibulum iaculis mauris enim, cursus tincidunt velit aliquet sit amet. Maecenas ac mauris auctor, sollicitudin ante id, suscipit magna. Cras vel magna eget mauris sollicitudin suscipit in nec ipsum.';
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel = {
+	value: A2(
+		_elm_lang$core$Basics_ops['++'],
+		_flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1,
+		A2(_elm_lang$core$Basics_ops['++'], '\n', _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2)),
+	editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createContent = F2(
+	function (model, id) {
+		return _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel(id) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel, id) : (_elm_lang$core$Native_Utils.eq(model.editMode, _flarebyte$bubblegum_ui_lab$EditMode$Editing) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit, model, id) : A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, model, id));
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = F2(
+	function (model, id) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('columns'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('column'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createContent, model, id),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('column is-1'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F2(
+	function (a, b) {
+		return {value: a, editMode: b};
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Config = F2(
+	function (a, b) {
+		return {id: a, title: b};
+	});
+
 var _pablohirafuji$elm_char_codepoint$Char_CodePoint$codePointToKeys = function (codePoint) {
 	var codePoint_ = codePoint - 65536;
 	var highSurrogate = (codePoint_ >> 10) + 55296;
@@ -17377,45 +18060,12 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
-var _flarebyte$bubblegum_ui_lab$EditMode$Suggesting = {ctor: 'Suggesting'};
-var _flarebyte$bubblegum_ui_lab$EditMode$Editing = {ctor: 'Editing'};
-var _flarebyte$bubblegum_ui_lab$EditMode$Viewing = {ctor: 'Viewing'};
-
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode = function (a) {
-	return {ctor: 'OnToggleTextAreaMode', _0: a};
-};
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea = function (a) {
-	return {ctor: 'OnChangeTextArea', _0: a};
-};
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue = function (a) {
-	return {ctor: 'OnDeleteTagValue', _0: a};
-};
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue = function (a) {
-	return {ctor: 'OnAddTagValue', _0: a};
-};
-
-var _flarebyte$bubblegum_ui_lab$TagWidget$listItem = function (item) {
+var _flarebyte$bubblegum_ui_lab$AppSidePanel$createMessage = function (message) {
 	return A2(
-		_elm_lang$html$Html$option,
+		_elm_lang$html$Html$article,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$value(
-				_elm_lang$core$Tuple$first(item)),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				_elm_lang$core$Tuple$second(item)),
-			_1: {ctor: '[]'}
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (item) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('control'),
+			_0: _elm_lang$html$Html_Attributes$class('message'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -17424,693 +18074,40 @@ var _flarebyte$bubblegum_ui_lab$TagWidget$oneTag = function (item) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+					_0: _elm_lang$html$Html_Attributes$class('message-body'),
 					_1: {ctor: '[]'}
 				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$span,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
-							_1: {
-								ctor: '::',
-								_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon', 'Athena, goddess of wisdom. Though Hercules had an enemy, Hera, on Mount Olympus, he also had a friend. ... Athena, the goddess of wisdom and military victory, and also the patron of the city of Athens, was Hercules\' half-sister. Her parents were Zeus and Metis, a nymph.'),
-								_1: {
-									ctor: '::',
-									_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-pos', 'up'),
-									_1: {
-										ctor: '::',
-										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-balloon-length', 'large'),
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(
-								_elm_lang$core$Tuple$second(item)),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$button,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_flarebyte$bubblegum_ui_lab$AppMsg$OnDeleteTagValue(
-											_elm_lang$core$Tuple$first(item))),
-									_1: {ctor: '[]'}
-								}
-							},
-							{ctor: '[]'}),
-						_1: {ctor: '[]'}
-					}
-				}),
+				A2(
+					_pablohirafuji$elm_markdown$Markdown$toHtml,
+					_elm_lang$core$Maybe$Nothing,
+					A2(_elm_lang$core$Maybe$withDefault, '', message))),
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TagWidget$create = function (model) {
+var _flarebyte$bubblegum_ui_lab$AppSidePanel$create = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box'),
+			_0: _elm_lang$html$Html_Attributes$class('box fixed'),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('field'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$label,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('label'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('Tags'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('select is-fullwidth'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$select,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnAddTagValue),
-												_1: {ctor: '[]'}
-											},
-											A2(
-												_elm_lang$core$List$map,
-												_flarebyte$bubblegum_ui_lab$TagWidget$listItem,
-												_elm_lang$core$Set$toList(model.suggestions))),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$p,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('help'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('This is a help text'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$i,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('fas fa-tags'),
-														_1: {ctor: '[]'}
-													},
-													{ctor: '[]'}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						_flarebyte$bubblegum_ui_lab$TagWidget$oneTag,
-						_elm_lang$core$Set$toList(model.values))),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TagWidget$selectFromKey = F2(
-	function (key, model) {
-		var selected = A2(
-			_elm_lang$core$Maybe$withDefault,
-			{ctor: '_Tuple2', _0: '?', _1: '?'},
-			_elm_lang$core$List$head(
-				_elm_lang$core$Set$toList(
-					A2(
-						_elm_lang$core$Set$filter,
-						function (kv) {
-							return _elm_lang$core$Native_Utils.eq(
-								_elm_lang$core$Tuple$first(kv),
-								key);
-						},
-						A2(_elm_lang$core$Set$union, model.values, model.suggestions)))));
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{selected: selected});
-	});
-var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToValues = function (model) {
-	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			values: A2(_elm_lang$core$Set$insert, model.selected, model.values),
-			suggestions: A2(_elm_lang$core$Set$remove, model.selected, model.suggestions)
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TagWidget$moveSelectedToSuggestions = function (model) {
-	return _elm_lang$core$Native_Utils.eq(model.selected, model.header) ? model : _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			values: A2(_elm_lang$core$Set$remove, model.selected, model.values),
-			suggestions: A2(_elm_lang$core$Set$insert, model.selected, model.suggestions)
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TagWidget$Description = F2(
-	function (a, b) {
-		return {title: a, comment: b};
-	});
-var _flarebyte$bubblegum_ui_lab$TagWidget$Model = F4(
-	function (a, b, c, d) {
-		return {header: a, selected: b, values: c, suggestions: d};
-	});
-
-var _flarebyte$bubblegum_ui_lab$InputWidget$create = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('field'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$label,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('label'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('Label'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('control'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$input,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('input'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$placeholder('Text input'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$type_('text'),
-												_1: {ctor: '[]'}
-											}
-										}
-									},
-									{ctor: '[]'}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('help'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('This is a help text'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
+			_0: _flarebyte$bubblegum_ui_lab$AppSidePanel$createMessage(model.message),
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$InputWidget$Model = function (a) {
-	return {value: a};
-};
-
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			function (line) {
-				return A2(
-					_elm_lang$html$Html$p,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(line),
-						_1: {ctor: '[]'}
-					});
-			},
-			_elm_lang$core$String$lines(model.value)));
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToString = function (mode) {
-	var _p0 = mode;
-	switch (_p0.ctor) {
-		case 'Viewing':
-			return 'Viewing';
-		case 'Editing':
-			return 'Editing';
-		default:
-			return 'Suggesting';
-	}
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass = F4(
-	function (expected, whenExpected, otherwise, actual) {
-		return _elm_lang$core$Native_Utils.eq(actual, expected) ? whenExpected : otherwise;
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon = function (iconId) {
-	return {
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$span,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$i,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class(
-							A2(_elm_lang$core$Basics_ops['++'], 'fas ', iconId)),
-						_1: {ctor: '[]'}
-					},
-					{ctor: '[]'}),
-				_1: {ctor: '[]'}
-			}),
-		_1: {ctor: '[]'}
-	};
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
-	return A2(
-		_elm_lang$html$Html$span,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('buttons'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$button,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class(
-						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(
-							_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
-						_1: {ctor: '[]'}
-					}
-				},
-				_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-eye')),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$button,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class(
-							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
-							_1: {ctor: '[]'}
-						}
-					},
-					_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-edit')),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$button,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class(
-								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(
-									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
-								_1: {ctor: '[]'}
-							}
-						},
-						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-check')),
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode = F2(
-	function (mode, model) {
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{editMode: mode});
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea = F2(
+var _flarebyte$bubblegum_ui_lab$AppSidePanel$setMessage = F2(
 	function (text, model) {
 		return _elm_lang$core$Native_Utils.update(
 			model,
-			{value: text});
+			{message: text});
 	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel = function (id) {
-	return _elm_lang$core$Native_Utils.cmp(id, 1) > 0;
+var _flarebyte$bubblegum_ui_lab$AppSidePanel$Model = function (a) {
+	return {message: a};
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$configs = {
-	ctor: '::',
-	_0: {id: 1, title: 'Description of the feature 1'},
-	_1: {
-		ctor: '::',
-		_0: {id: 2, title: 'Description of the feature 2'},
-		_1: {
-			ctor: '::',
-			_0: {id: 3, title: 'Description of the feature 3'},
-			_1: {
-				ctor: '::',
-				_0: {id: 4, title: 'Description of the feature 4'},
-				_1: {ctor: '[]'}
-			}
-		}
-	}
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig = function (id) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		{id: 1, title: 'Description of the feature'},
-		_elm_lang$core$List$head(
-			A2(
-				_elm_lang$core$List$filter,
-				function (i) {
-					return _elm_lang$core$Native_Utils.eq(i.id, id);
-				},
-				_flarebyte$bubblegum_ui_lab$TextAreaWidget$configs)));
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
-	function (model, id) {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$h4,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							function (_) {
-								return _.title;
-							}(
-								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$textarea,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('textarea is-marginless is-paddingless is-shadowless'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$value(model.value),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html_Attributes$attribute,
-												'rows',
-												_elm_lang$core$Basics$toString(
-													A2(
-														F2(
-															function (x, y) {
-																return x + y;
-															}),
-														1,
-														_elm_lang$core$List$length(
-															_elm_lang$core$String$lines(model.value))))),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
-	function (model, id) {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$h4,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							function (_) {
-								return _.title;
-							}(
-								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2 = 'Pellentesque vel aliquam diam. Pellentesque tincidunt posuere libero at congue. Praesent vitae est ex. Cras mauris felis, sollicitudin eu quam non, rhoncus bibendum lectus. Nam id mattis est. Pellentesque pellentesque est elit, sed maximus massa sagittis in. Nullam non blandit neque, sed facilisis turpis. Fusce purus orci, auctor at posuere vel, pharetra at leo. Sed semper nec leo sed hendrerit. Quisque sollicitudin et dui in cursus. Donec vel libero feugiat, iaculis felis ac, condimentum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Vestibulum iaculis mauris enim, cursus tincidunt velit aliquet sit amet. Maecenas ac mauris auctor, sollicitudin ante id, suscipit magna. Cras vel magna eget mauris sollicitudin suscipit in nec ipsum.';
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel = {
-	value: A2(
-		_elm_lang$core$Basics_ops['++'],
-		_flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1,
-		A2(_elm_lang$core$Basics_ops['++'], '\n', _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2)),
-	editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createContent = F2(
-	function (model, id) {
-		return _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel(id) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel, id) : (_elm_lang$core$Native_Utils.eq(model.editMode, _flarebyte$bubblegum_ui_lab$EditMode$Editing) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit, model, id) : A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, model, id));
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = F2(
-	function (model, id) {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('columns'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('column'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createContent, model, id),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('column is-1'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F2(
-	function (a, b) {
-		return {value: a, editMode: b};
-	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Config = F2(
-	function (a, b) {
-		return {id: a, title: b};
-	});
 
-var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box sticky-left'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$article,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('message'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('message-header'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(desc.title),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('message-body'),
-								_1: {ctor: '[]'}
-							},
-							A2(_pablohirafuji$elm_markdown$Markdown$toHtml, _elm_lang$core$Maybe$Nothing, desc.comment)),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
 var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -18283,8 +18280,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 							},
 							{
 								ctor: '::',
-								_0: _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription(
-									{title: 'Input Widget', comment: 'This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget.'}),
+								_0: _flarebyte$bubblegum_ui_lab$AppSidePanel$create(model.sidePanel),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -18293,6 +18289,13 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 			_1: {ctor: '[]'}
 		});
 };
+var _flarebyte$bubblegum_ui_lab$FormBuilder$setAppSidePanel = F2(
+	function (panel, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{sidePanel: panel});
+	});
+var _flarebyte$bubblegum_ui_lab$FormBuilder$asAppSidePanelIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$FormBuilder$setAppSidePanel);
 var _flarebyte$bubblegum_ui_lab$FormBuilder$setTextAreaWidget = F2(
 	function (widget, model) {
 		return _elm_lang$core$Native_Utils.update(
@@ -18307,13 +18310,9 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget = F2(
 			{tagWidget: widget});
 	});
 var _flarebyte$bubblegum_ui_lab$FormBuilder$asTagWidgetIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$FormBuilder$setTagWidget);
-var _flarebyte$bubblegum_ui_lab$FormBuilder$Description = F2(
-	function (a, b) {
-		return {title: a, comment: b};
-	});
-var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = F3(
-	function (a, b, c) {
-		return {tagWidget: a, inputWidget: b, textAreaWidget: c};
+var _flarebyte$bubblegum_ui_lab$FormBuilder$Model = F4(
+	function (a, b, c, d) {
+		return {tagWidget: a, inputWidget: b, textAreaWidget: c, sidePanel: d};
 	});
 
 var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
@@ -18323,6 +18322,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
+var _flarebyte$bubblegum_ui_lab$AppModel$sidePanel = {message: _elm_lang$core$Maybe$Nothing};
 var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing};
 var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
@@ -18360,7 +18360,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
 	counter: 1,
 	status: 'OK',
-	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget, inputWidget: _flarebyte$bubblegum_ui_lab$AppModel$inputWidget, textAreaWidget: _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget}
+	formBuilder: {tagWidget: _flarebyte$bubblegum_ui_lab$AppModel$tagWidget, inputWidget: _flarebyte$bubblegum_ui_lab$AppModel$inputWidget, textAreaWidget: _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget, sidePanel: _flarebyte$bubblegum_ui_lab$AppModel$sidePanel}
 };
 var _flarebyte$bubblegum_ui_lab$AppModel$AppModel = F3(
 	function (a, b, c) {
@@ -18820,7 +18820,7 @@ var _flarebyte$bubblegum_ui_lab$App$update = F2(
 						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
 						model.formBuilder,
 						A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea, _p0._0, model.formBuilder.textAreaWidget)));
-			default:
+			case 'OnToggleTextAreaMode':
 				return A2(
 					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
 					model,
@@ -18828,6 +18828,17 @@ var _flarebyte$bubblegum_ui_lab$App$update = F2(
 						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
 						model.formBuilder,
 						A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode, _p0._0, model.formBuilder.textAreaWidget)));
+			default:
+				return A2(
+					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_ui_lab$FormBuilder$asAppSidePanelIn,
+						model.formBuilder,
+						A2(
+							_flarebyte$bubblegum_ui_lab$AppSidePanel$setMessage,
+							_elm_lang$core$Maybe$Just(_p0._0),
+							model.formBuilder.sidePanel)));
 		}
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(

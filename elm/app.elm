@@ -14,6 +14,7 @@ import AppModel exposing (..)
 import FormBuilder exposing(..)
 import TagWidget exposing(..)
 import TextAreaWidget exposing(..)
+import AppSidePanel
 import AppNavbar
 import AppMsg exposing (..)
 import EditMode exposing(..)
@@ -50,6 +51,10 @@ update msg model =
     OnToggleTextAreaMode value ->
       toggleMode value model.formBuilder.textAreaWidget 
       |> asTextAreaWidgetIn model.formBuilder
+      |> asFormBuilderIn model
+    OnValidationError value ->
+      AppSidePanel.setMessage (Just value) model.formBuilder.sidePanel 
+      |> asAppSidePanelIn model.formBuilder
       |> asFormBuilderIn model
             
 

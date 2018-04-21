@@ -1,22 +1,18 @@
-module FormBuilder exposing(create, Model, asTagWidgetIn, asTextAreaWidgetIn)
+module FormBuilder exposing(create, Model, asTagWidgetIn, asTextAreaWidgetIn, asAppSidePanelIn)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Markdown
 import TagWidget
 import InputWidget
 import TextAreaWidget
+import AppSidePanel
 import AppMsg exposing (..)
-
-type alias Description  = {
-    title: String
-    , comment: String
-}
 
 type alias Model = {
     tagWidget: TagWidget.Model
     , inputWidget: InputWidget.Model
     , textAreaWidget: TextAreaWidget.Model
+    , sidePanel: AppSidePanel.Model
 }
 
 setTagWidget: TagWidget.Model -> Model -> Model
@@ -33,18 +29,14 @@ setTextAreaWidget widget model =
 asTextAreaWidgetIn:  Model-> TextAreaWidget.Model -> Model
 asTextAreaWidgetIn  = flip setTextAreaWidget
 
-sideDescription: Description -> Html msg
-sideDescription desc =
-    div [ class "box sticky-left"]
-        [ article [ class "message" ]
-            [ div [ class "message-header" ]
-                [ p []
-                    [ text desc.title ]
-                ]
-            , div [ class "message-body" ]
-                (Markdown.toHtml Nothing desc.comment)
-            ]
-        ]
+setAppSidePanel: AppSidePanel.Model -> Model -> Model
+setAppSidePanel panel model =
+    { model | sidePanel = panel}
+
+asAppSidePanelIn:  Model-> AppSidePanel.Model -> Model
+asAppSidePanelIn  = flip setAppSidePanel
+
+
 create: Model -> Html AppMsg
 create  model =
     div [ class "container" ]
@@ -75,10 +67,7 @@ create  model =
             ] 
         , div [ class "column" ]
             [
-            sideDescription 
-            { title = "Input Widget"
-            , comment = "This is a descriptionw of *Emphasis*, **strong emphasis**, ***both*** widget."
-            }
+            AppSidePanel.create model.sidePanel
             ]
         ]
     ]

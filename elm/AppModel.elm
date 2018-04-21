@@ -3,6 +3,7 @@ module AppModel exposing(..)
 import Set
 import FormBuilder exposing(Model)
 import EditMode exposing(..)
+import Maybe
 
 type alias AppModel = {
    counter: Int
@@ -14,13 +15,18 @@ tagWidgetHeader = ("", " Please select a tag")
 tagWidget = { header = tagWidgetHeader, selected = tagWidgetHeader,  values = Set.empty , suggestions = ([tagWidgetHeader, ("a", "Aphrodite"), ("b", "Apollo"), ("c", "Ares"), ("d", "Artemis"), ("e", "Athena")] |> Set.fromList) }
 inputWidget = { value= "" }
 textAreaWidget = { value= "" , editMode = Viewing}
+sidePanel = { message = Maybe.Nothing}
 
 reset: AppModel
 reset =
     {
        counter = 1
        , status = "OK"
-       , formBuilder = { tagWidget = tagWidget , inputWidget = inputWidget, textAreaWidget = textAreaWidget}
+       , formBuilder = { tagWidget = tagWidget
+            , inputWidget = inputWidget
+            , textAreaWidget = textAreaWidget
+            , sidePanel = sidePanel
+            }
     }
 
 setFormBuilder: FormBuilder.Model -> AppModel -> AppModel
