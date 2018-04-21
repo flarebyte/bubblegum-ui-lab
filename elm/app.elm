@@ -16,6 +16,8 @@ import TagWidget exposing(..)
 import TextAreaWidget exposing(..)
 import AppNavbar
 import AppMsg exposing (..)
+import EditMode exposing(..)
+
 
 
 main =
@@ -45,8 +47,8 @@ update msg model =
       setTextArea value model.formBuilder.textAreaWidget 
       |> asTextAreaWidgetIn model.formBuilder
       |> asFormBuilderIn model
-    OnToggleTextAreaEdit ->
-      toggleEditMode model.formBuilder.textAreaWidget 
+    OnToggleTextAreaMode value ->
+      toggleMode value model.formBuilder.textAreaWidget 
       |> asTextAreaWidgetIn model.formBuilder
       |> asFormBuilderIn model
             

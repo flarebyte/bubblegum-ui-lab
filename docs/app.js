@@ -17006,7 +17006,13 @@ var _pablohirafuji$elm_markdown$Markdown$toHtml = F2(
 				A2(_pablohirafuji$elm_markdown$Markdown_Block$parse, maybeOptions, rawText)));
 	});
 
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit = {ctor: 'OnToggleTextAreaEdit'};
+var _flarebyte$bubblegum_ui_lab$EditMode$Suggesting = {ctor: 'Suggesting'};
+var _flarebyte$bubblegum_ui_lab$EditMode$Editing = {ctor: 'Editing'};
+var _flarebyte$bubblegum_ui_lab$EditMode$Viewing = {ctor: 'Viewing'};
+
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode = function (a) {
+	return {ctor: 'OnToggleTextAreaMode', _0: a};
+};
 var _flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea = function (a) {
 	return {ctor: 'OnChangeTextArea', _0: a};
 };
@@ -17369,155 +17375,298 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
 			},
 			_elm_lang$core$String$lines(model.value)));
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToString = function (mode) {
+	var _p0 = mode;
+	switch (_p0.ctor) {
+		case 'Viewing':
+			return 'Viewing';
+		case 'Editing':
+			return 'Editing';
+		default:
+			return 'Suggesting';
+	}
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass = F4(
+	function (expected, whenExpected, otherwise, actual) {
+		return _elm_lang$core$Native_Utils.eq(actual, expected) ? whenExpected : otherwise;
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$iconOnly = function (iconId) {
 	return A2(
-		_elm_lang$html$Html$button,
+		_elm_lang$html$Html$span,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('button'),
-			_1: {
-				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onClick(_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit),
-				_1: {ctor: '[]'}
-			}
+			_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$span,
+				_elm_lang$html$Html$i,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+					_0: _elm_lang$html$Html_Attributes$class(
+						A2(_elm_lang$core$Basics_ops['++'], 'fas ', iconId)),
 					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {ctor: '[]'}
+		});
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('buttons has-addons'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class(
+						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected', 'button', model.editMode)),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(
+							_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
+						_1: {ctor: '[]'}
+					}
 				},
 				{
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$i,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('fas fa-edit'),
-							_1: {ctor: '[]'}
-						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h4,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Description of the feature'),
-					_1: {ctor: '[]'}
+					_0: _elm_lang$html$Html$text('Viewing'),
+					_1: {
+						ctor: '::',
+						_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$iconOnly('fa-edit'),
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+				_0: A2(
+					_elm_lang$html$Html$button,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(
+							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected', 'button', model.editMode)),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Editing'),
+						_1: {ctor: '[]'}
+					}),
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$textarea,
+						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('textarea is-marginless is-paddingless is-shadowless'),
+							_0: _elm_lang$html$Html_Attributes$class(
+								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected', 'button', model.editMode)),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$value(model.value),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html_Attributes$attribute,
-												'rows',
-												_elm_lang$core$Basics$toString(
-													A2(
-														F2(
-															function (x, y) {
-																return x + y;
-															}),
-														1,
-														_elm_lang$core$List$length(
-															_elm_lang$core$String$lines(model.value))))),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
+								_0: _elm_lang$html$Html_Events$onClick(
+									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
+								_1: {ctor: '[]'}
 							}
 						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Suggesting'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToString(model.editMode)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
-			_1: {
-				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onMouseEnter(_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaEdit),
-				_1: {ctor: '[]'}
-			}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h4,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Description of the feature'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
-				_1: {
-					ctor: '::',
-					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = function (model) {
-	return model.editMode ? _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit(model) : _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView(model);
-};
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleEditMode = function (model) {
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{editMode: !model.editMode});
-};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode = F2(
+	function (mode, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{editMode: mode});
+	});
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea = F2(
 	function (text, model) {
 		return _elm_lang$core$Native_Utils.update(
 			model,
 			{value: text});
 	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel = function (id) {
+	return _elm_lang$core$Native_Utils.cmp(id, 1) > 0;
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$configs = {
+	ctor: '::',
+	_0: {id: 1, title: 'Description of the feature 1'},
+	_1: {
+		ctor: '::',
+		_0: {id: 2, title: 'Description of the feature 2'},
+		_1: {
+			ctor: '::',
+			_0: {id: 3, title: 'Description of the feature 3'},
+			_1: {
+				ctor: '::',
+				_0: {id: 4, title: 'Description of the feature 4'},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig = function (id) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		{id: 1, title: 'Description of the feature'},
+		_elm_lang$core$List$head(
+			A2(
+				_elm_lang$core$List$filter,
+				function (i) {
+					return _elm_lang$core$Native_Utils.eq(i.id, id);
+				},
+				_flarebyte$bubblegum_ui_lab$TextAreaWidget$configs)));
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
+	function (model, id) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h4,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							function (_) {
+								return _.title;
+							}(
+								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$textarea,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('textarea is-marginless is-paddingless is-shadowless'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('e.g. Hello world'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$value(model.value),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html_Attributes$attribute,
+													'rows',
+													_elm_lang$core$Basics$toString(
+														A2(
+															F2(
+																function (x, y) {
+																	return x + y;
+																}),
+															1,
+															_elm_lang$core$List$length(
+																_elm_lang$core$String$lines(model.value))))),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
+	function (model, id) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h4,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							function (_) {
+								return _.title;
+							}(
+								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+					_1: {
+						ctor: '::',
+						_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2 = 'Pellentesque vel aliquam diam. Pellentesque tincidunt posuere libero at congue. Praesent vitae est ex. Cras mauris felis, sollicitudin eu quam non, rhoncus bibendum lectus. Nam id mattis est. Pellentesque pellentesque est elit, sed maximus massa sagittis in. Nullam non blandit neque, sed facilisis turpis. Fusce purus orci, auctor at posuere vel, pharetra at leo. Sed semper nec leo sed hendrerit. Quisque sollicitudin et dui in cursus. Donec vel libero feugiat, iaculis felis ac, condimentum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Vestibulum iaculis mauris enim, cursus tincidunt velit aliquet sit amet. Maecenas ac mauris auctor, sollicitudin ante id, suscipit magna. Cras vel magna eget mauris sollicitudin suscipit in nec ipsum.';
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel = {
+	value: A2(
+		_elm_lang$core$Basics_ops['++'],
+		_flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1,
+		A2(_elm_lang$core$Basics_ops['++'], '\n', _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2)),
+	editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing
+};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = F2(
+	function (model, id) {
+		return _flarebyte$bubblegum_ui_lab$TextAreaWidget$shouldUseDefaultModel(id) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel, id) : (_elm_lang$core$Native_Utils.eq(model.editMode, _flarebyte$bubblegum_ui_lab$EditMode$Editing) ? A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit, model, id) : A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$createView, model, id));
+	});
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F2(
 	function (a, b) {
 		return {value: a, editMode: b};
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Config = F2(
+	function (a, b) {
+		return {id: a, title: b};
 	});
 
 var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
@@ -17641,14 +17790,14 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 													_elm_lang$core$Basics_ops['++'],
 													{
 														ctor: '::',
-														_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$create(model.textAreaWidget),
+														_0: A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$create, model.textAreaWidget, 1),
 														_1: {ctor: '[]'}
 													},
 													A2(
 														_elm_lang$core$Basics_ops['++'],
 														{
 															ctor: '::',
-															_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$create(model.textAreaWidget),
+															_0: A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$create, model.textAreaWidget, 2),
 															_1: {ctor: '[]'}
 														},
 														A2(
@@ -17669,7 +17818,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 																	_elm_lang$core$Basics_ops['++'],
 																	{
 																		ctor: '::',
-																		_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																		_0: A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$create, model.textAreaWidget, 3),
 																		_1: {ctor: '[]'}
 																	},
 																	A2(
@@ -17721,11 +17870,18 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$create = function (model) {
 																									_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
 																									_1: {ctor: '[]'}
 																								},
-																								{
-																									ctor: '::',
-																									_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
-																									_1: {ctor: '[]'}
-																								}))))))))))))))))),
+																								A2(
+																									_elm_lang$core$Basics_ops['++'],
+																									{
+																										ctor: '::',
+																										_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																										_1: {ctor: '[]'}
+																									},
+																									{
+																										ctor: '::',
+																										_0: _flarebyte$bubblegum_ui_lab$InputWidget$create(model.inputWidget),
+																										_1: {ctor: '[]'}
+																									})))))))))))))))))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -17779,7 +17935,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
-var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: false};
+var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing};
 var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
@@ -18283,7 +18439,7 @@ var _flarebyte$bubblegum_ui_lab$App$update = F2(
 					A2(
 						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
 						model.formBuilder,
-						_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleEditMode(model.formBuilder.textAreaWidget)));
+						A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode, _p0._0, model.formBuilder.textAreaWidget)));
 		}
 	});
 var _flarebyte$bubblegum_ui_lab$App$main = _elm_lang$html$Html$beginnerProgram(

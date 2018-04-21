@@ -2,6 +2,8 @@ module AppModel exposing(..)
 
 import Set
 import FormBuilder exposing(Model)
+import EditMode exposing(..)
+
 type alias AppModel = {
    counter: Int
    , status: String
@@ -11,7 +13,7 @@ type alias AppModel = {
 tagWidgetHeader = ("", " Please select a tag")
 tagWidget = { header = tagWidgetHeader, selected = tagWidgetHeader,  values = Set.empty , suggestions = ([tagWidgetHeader, ("a", "Aphrodite"), ("b", "Apollo"), ("c", "Ares"), ("d", "Artemis"), ("e", "Athena")] |> Set.fromList) }
 inputWidget = { value= "" }
-textAreaWidget = { value= "" , editMode = False}
+textAreaWidget = { value= "" , editMode = Viewing}
 
 reset: AppModel
 reset =
