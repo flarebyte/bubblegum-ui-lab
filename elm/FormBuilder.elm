@@ -35,7 +35,7 @@ asTextAreaWidgetIn  = flip setTextAreaWidget
 
 sideDescription: Description -> Html msg
 sideDescription desc =
-    div [ class "box"]
+    div [ class "box sticky-left"]
         [ article [ class "message" ]
             [ div [ class "message-header" ]
                 [ p []

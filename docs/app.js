@@ -18062,7 +18062,7 @@ var _flarebyte$bubblegum_ui_lab$FormBuilder$sideDescription = function (desc) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('box'),
+			_0: _elm_lang$html$Html_Attributes$class('box sticky-left'),
 			_1: {ctor: '[]'}
 		},
 		{
