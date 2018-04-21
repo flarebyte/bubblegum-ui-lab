@@ -18065,7 +18065,7 @@ var _flarebyte$bubblegum_ui_lab$AppSidePanel$createMessage = function (message) 
 		_elm_lang$html$Html$article,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('message'),
+			_0: _elm_lang$html$Html_Attributes$class('message is-danger'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -18322,7 +18322,6 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
-var _flarebyte$bubblegum_ui_lab$AppModel$sidePanel = {message: _elm_lang$core$Maybe$Nothing};
 var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing};
 var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
@@ -18356,6 +18355,10 @@ var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
 				}
 			}
 		})
+};
+var _flarebyte$bubblegum_ui_lab$AppModel$ipsum1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
+var _flarebyte$bubblegum_ui_lab$AppModel$sidePanel = {
+	message: _elm_lang$core$Maybe$Just(_flarebyte$bubblegum_ui_lab$AppModel$ipsum1)
 };
 var _flarebyte$bubblegum_ui_lab$AppModel$reset = {
 	counter: 1,

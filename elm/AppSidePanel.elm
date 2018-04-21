@@ -17,7 +17,7 @@ setMessage text model=
 
 createMessage: Maybe String -> Html AppMsg
 createMessage  message =
-    article [ class "message" ]
+    article [ class "message is-danger" ]
         [  div [ class "message-body" ]
             (message |> Maybe.withDefault "" |> Markdown.toHtml Nothing)
         ]
