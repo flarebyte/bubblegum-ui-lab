@@ -50,14 +50,12 @@ toggleMode: EditMode -> Model -> Model
 toggleMode mode model=
     { model | editMode = mode }
 
-textAndIcon: String -> String -> List (Html AppMsg)
-textAndIcon label iconId=
+smallIcon: String -> List (Html AppMsg)
+smallIcon iconId=
     [ span [ class "icon is-small" ]
         [ i [ class ("fas " ++ iconId) ]
             []
         ]
-    , span []
-        [ text label ]
     ]
 
 editModeToClass:  EditMode -> String -> String -> EditMode -> String
@@ -78,11 +76,11 @@ checkEditMode: Model -> Html AppMsg
 checkEditMode model =
     span [ class "buttons" ]
         [ button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
-            (textAndIcon "V" "fa-edit")
+            (smallIcon  "fa-eye")
         , button [ class (editModeToClass Editing "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
-            (textAndIcon "E" "fa-edit")
+            (smallIcon  "fa-edit")
         , button [ class (editModeToClass Suggesting "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Suggesting) ]
-            (textAndIcon "S" "fa-edit")
+            (smallIcon "fa-check")
         ]
 
 renderText: Model -> Html AppMsg
@@ -92,8 +90,7 @@ renderText model =
 createEdit: Model -> Int -> Html AppMsg
 createEdit  model id =
     div [ class "box is-marginless is-paddingless is-shadowless has-addons"]
-        [   checkEditMode model
-           , h4 [] [ text (getConfig id|> .title)]
+        [  h4 [] [ text (getConfig id|> .title)]
            , textarea [ class "textarea is-marginless is-paddingless is-shadowless"
                 , placeholder "e.g. Hello world"
                 , onInput OnChangeTextArea
@@ -108,16 +105,25 @@ createView  model id =
     div [ class "box is-marginless is-paddingless is-shadowless has-addons"
          -- , onMouseEnter OnToggleTextAreaEditing
         ]
-        [   checkEditMode model
-            , h4 [] [ text (getConfig id|> .title)]
+        [ h4 [] [ text (getConfig id|> .title)]
             , renderText model
         ]       
 
-create: Model -> Int -> Html AppMsg
-create  model id=
+createContent: Model -> Int -> Html AppMsg
+createContent  model id=
     if shouldUseDefaultModel id then
         createView defaultModel id
     else if model.editMode == Editing then
         createEdit model id
     else
         createView model id
+
+
+create: Model -> Int -> Html AppMsg
+create  model id=
+    div [ class "columns" ]
+    [ div [ class "column" ]
+        [createContent model id]
+    , div [ class "column is-1" ]
+        [ checkEditMode model ]
+    ]
