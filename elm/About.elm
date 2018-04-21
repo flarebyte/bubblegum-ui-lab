@@ -6,7 +6,7 @@ import Html.Attributes exposing (..)
 
 footerLevel: Html msg
 footerLevel =
-    nav [ class "navbar is-transparent" ]
+    nav [ class "navbar is-fixed-bottom is-black" ]
         [ div [ class "navbar-brand" ]
             [ a [ class "navbar-item", href "https://bulma.io" ]
                 [ img [ alt "Bulma: a modern CSS framework based on Flexbox", attribute "height" "28", src "https://bulma.io/images/bulma-logo.png", attribute "width" "112" ]

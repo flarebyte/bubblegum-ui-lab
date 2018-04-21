@@ -9327,7 +9327,7 @@ var _flarebyte$bubblegum_ui_lab$About$footerLevel = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('navbar is-transparent'),
+		_0: _elm_lang$html$Html_Attributes$class('navbar is-fixed-bottom is-black'),
 		_1: {ctor: '[]'}
 	},
 	{
