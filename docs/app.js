@@ -17615,7 +17615,11 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$h4,
-					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
+						_1: {ctor: '[]'}
+					},
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text(
@@ -17679,7 +17683,11 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$h4,
-					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('title is-4'),
+						_1: {ctor: '[]'}
+					},
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text(

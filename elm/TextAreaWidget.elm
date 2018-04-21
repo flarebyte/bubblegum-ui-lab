@@ -90,7 +90,7 @@ renderText model =
 createEdit: Model -> Int -> Html AppMsg
 createEdit  model id =
     div [ class "box is-marginless is-paddingless is-shadowless has-addons"]
-        [  h4 [] [ text (getConfig id|> .title)]
+        [  h4 [ class "title is-4" ] [ text (getConfig id|> .title)]
            , textarea [ class "textarea is-marginless is-paddingless is-shadowless"
                 , placeholder "e.g. Hello world"
                 , onInput OnChangeTextArea
@@ -105,7 +105,7 @@ createView  model id =
     div [ class "box is-marginless is-paddingless is-shadowless has-addons"
          -- , onMouseEnter OnToggleTextAreaEditing
         ]
-        [ h4 [] [ text (getConfig id|> .title)]
+        [ h4 [ class "title is-4" ] [ text (getConfig id|> .title)]
             , renderText model
         ]       
 
