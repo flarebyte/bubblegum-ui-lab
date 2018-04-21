@@ -9323,11 +9323,11 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _flarebyte$bubblegum_ui_lab$About$appFooter = A2(
-	_elm_lang$html$Html$footer,
+var _flarebyte$bubblegum_ui_lab$About$footerLevel = A2(
+	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('footer'),
+		_0: _elm_lang$html$Html_Attributes$class('level'),
 		_1: {ctor: '[]'}
 	},
 	{
@@ -9336,113 +9336,194 @@ var _flarebyte$bubblegum_ui_lab$About$appFooter = A2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('container'),
+				_0: _elm_lang$html$Html_Attributes$class('level-item has-text-centered'),
 				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('content has-text-centered'),
-						_1: {ctor: '[]'}
-					},
+					{ctor: '[]'},
 					{
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$p,
-							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$strong,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Bublegum User interface widgets experiment'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(' by '),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$a,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$href('https://github.com/olih'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Olivier Huin'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('. The source code is licensed under BSD3'),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
+								_0: _elm_lang$html$Html_Attributes$class('heading'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Tweets'),
+								_1: {ctor: '[]'}
 							}),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('title'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('3,456'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
 					}),
-				_1: {ctor: '[]'}
-			}),
-		_1: {ctor: '[]'}
-	});
-var _flarebyte$bubblegum_ui_lab$About$appHeader = A2(
-	_elm_lang$html$Html$div,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('container'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$h1,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('title'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('Bublegum User interface widgets experiment'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$p,
+				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('subtitle'),
+					_0: _elm_lang$html$Html_Attributes$class('level-item has-text-centered'),
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('List of widgets'),
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('heading'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Following'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$p,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('title'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('123'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$p,
+					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('subtitle'),
+						_0: _elm_lang$html$Html_Attributes$class('level-item has-text-centered'),
 						_1: {ctor: '[]'}
 					},
-					{ctor: '[]'}),
-				_1: {ctor: '[]'}
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$p,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('heading'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Followers'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('title'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('456K'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('level-item has-text-centered'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('heading'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Likes'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$p,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('title'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('789'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		}
 	});
+var _flarebyte$bubblegum_ui_lab$About$appFooter = _flarebyte$bubblegum_ui_lab$About$footerLevel;
 
 var _pablohirafuji$elm_char_codepoint$Char_CodePoint$codePointToKeys = function (codePoint) {
 	var codePoint_ = codePoint - 65536;

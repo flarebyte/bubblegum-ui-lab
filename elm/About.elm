@@ -4,31 +4,43 @@ module About
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
-
-appHeader: Html msg
-appHeader = 
-    div [ class "container" ]
-        [ h1 [ class "title" ]
-            [ text "Bublegum User interface widgets experiment" ]
-        , p [ class "subtitle" ]
-            [ text "List of widgets"
+footerLevel: Html msg
+footerLevel =
+    nav [ class "level" ]
+        [ div [ class "level-item has-text-centered" ]
+            [ div []
+                [ p [ class "heading" ]
+                    [ text "Tweets" ]
+                , p [ class "title" ]
+                    [ text "3,456" ]
+                ]
             ]
-        , p [ class "subtitle" ] []   
+        , div [ class "level-item has-text-centered" ]
+            [ div []
+                [ p [ class "heading" ]
+                    [ text "Following" ]
+                , p [ class "title" ]
+                    [ text "123" ]
+                ]
+            ]
+        , div [ class "level-item has-text-centered" ]
+            [ div []
+                [ p [ class "heading" ]
+                    [ text "Followers" ]
+                , p [ class "title" ]
+                    [ text "456K" ]
+                ]
+            ]
+        , div [ class "level-item has-text-centered" ]
+            [ div []
+                [ p [ class "heading" ]
+                    [ text "Likes" ]
+                , p [ class "title" ]
+                    [ text "789" ]
+                ]
+            ]
         ]
 
 appFooter : Html msg
 appFooter =
-    footer [ class "footer" ]
-        [ div [ class "container" ]
-            [ div [ class "content has-text-centered" ]
-                [ p []
-                    [ strong []
-                        [ text "Bublegum User interface widgets experiment" ]
-                    , text " by "
-                    , a [ href "https://github.com/olih" ]
-                        [ text "Olivier Huin" ]
-                    , text ". The source code is licensed under BSD3"
-                    ]
-                ]
-            ]
-        ]
+    footerLevel
