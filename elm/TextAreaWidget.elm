@@ -76,7 +76,7 @@ editModeToString mode =
 
 checkEditMode: Model -> Html AppMsg
 checkEditMode model =
-    div [ class "buttons has-addons is-pulled-right" ]
+    span [ class "buttons" ]
         [ button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
             (textAndIcon "V" "fa-edit")
         , button [ class (editModeToClass Editing "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
@@ -91,9 +91,9 @@ renderText model =
 
 createEdit: Model -> Int -> Html AppMsg
 createEdit  model id =
-    div [ class "box is-marginless is-paddingless is-shadowless"]
-        [   h4 [] [ text (getConfig id|> .title)]
-           , checkEditMode model
+    div [ class "box is-marginless is-paddingless is-shadowless has-addons"]
+        [   checkEditMode model
+           , h4 [] [ text (getConfig id|> .title)]
            , textarea [ class "textarea is-marginless is-paddingless is-shadowless"
                 , placeholder "e.g. Hello world"
                 , onInput OnChangeTextArea
@@ -105,11 +105,11 @@ createEdit  model id =
 
 createView: Model -> Int -> Html AppMsg
 createView  model id =
-    div [ class "box is-marginless is-paddingless is-shadowless"
+    div [ class "box is-marginless is-paddingless is-shadowless has-addons"
          -- , onMouseEnter OnToggleTextAreaEditing
         ]
-        [   h4 [] [ text (getConfig id|> .title)]
-            , checkEditMode model
+        [   checkEditMode model
+            , h4 [] [ text (getConfig id|> .title)]
             , renderText model
         ]       
 

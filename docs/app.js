@@ -17430,10 +17430,10 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$textAndIcon = F2(
 	});
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
 	return A2(
-		_elm_lang$html$Html$div,
+		_elm_lang$html$Html$span,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('buttons has-addons is-pulled-right'),
+			_0: _elm_lang$html$Html_Attributes$class('buttons'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -17539,26 +17539,26 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
 				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$h4,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							function (_) {
-								return _.title;
-							}(
-								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
-						_1: {ctor: '[]'}
-					}),
+				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
 				_1: {
 					ctor: '::',
-					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+					_0: A2(
+						_elm_lang$html$Html$h4,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								function (_) {
+									return _.title;
+								}(
+									_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+							_1: {ctor: '[]'}
+						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
@@ -17607,26 +17607,26 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless'),
+				_0: _elm_lang$html$Html_Attributes$class('box is-marginless is-paddingless is-shadowless has-addons'),
 				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$h4,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							function (_) {
-								return _.title;
-							}(
-								_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
-						_1: {ctor: '[]'}
-					}),
+				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
 				_1: {
 					ctor: '::',
-					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
+					_0: A2(
+						_elm_lang$html$Html$h4,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								function (_) {
+									return _.title;
+								}(
+									_flarebyte$bubblegum_ui_lab$TextAreaWidget$getConfig(id))),
+							_1: {ctor: '[]'}
+						}),
 					_1: {
 						ctor: '::',
 						_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText(model),
