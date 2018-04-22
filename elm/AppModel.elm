@@ -15,7 +15,7 @@ ipsum1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauri
 tagWidgetHeader = ("", " Please select a tag")
 tagWidget = { header = tagWidgetHeader, selected = tagWidgetHeader,  values = Set.empty , suggestions = ([tagWidgetHeader, ("a", "Aphrodite"), ("b", "Apollo"), ("c", "Ares"), ("d", "Artemis"), ("e", "Athena")] |> Set.fromList) }
 inputWidget = { value= "" }
-textAreaWidget = { value= "" , editMode = Viewing}
+textAreaWidget = { value= "" , editMode = Viewing, ref = "101"}
 sidePanel = { message = Just ipsum1}
 
 reset: AppModel

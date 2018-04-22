@@ -9,7 +9,8 @@ import AppMsg exposing (..)
 import EditMode exposing(..)
 
 type alias Model = {
-    value: String
+    ref: String
+    , value: String
     , editMode: EditMode
  }
 
@@ -18,7 +19,8 @@ ipsum2 = "Pellentesque vel aliquam diam. Pellentesque tincidunt posuere libero a
 
 defaultModel: Model
 defaultModel = {
-   value = ipsum1 ++ "\n" ++ ipsum2
+   ref = "000"
+   , value = ipsum1 ++ "\n" ++ ipsum2
    , editMode = Viewing 
  }
 
@@ -75,7 +77,9 @@ editModeToString mode =
 checkEditMode: Model -> Html AppMsg
 checkEditMode model =
     span [ class "buttons" ]
-        [ button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
+        [ span [ class (editModeToClass Viewing "button is-danger is-selected is-small" "button is-small" model.editMode) ]
+            (smallIcon  "fa-exclamation-triangle")
+        , button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
             (smallIcon  "fa-eye")
         , button [ class (editModeToClass Editing "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
             (smallIcon  "fa-edit")

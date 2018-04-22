@@ -10239,19 +10239,14 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) 
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$button,
+				_elm_lang$html$Html$span,
 				{
 					ctor: '::',
 					_0: _elm_lang$html$Html_Attributes$class(
-						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(
-							_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
-						_1: {ctor: '[]'}
-					}
+						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-danger is-selected is-small', 'button is-small', model.editMode)),
+					_1: {ctor: '[]'}
 				},
-				_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-eye')),
+				_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-exclamation-triangle')),
 			_1: {
 				ctor: '::',
 				_0: A2(
@@ -10259,15 +10254,15 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) 
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html_Attributes$class(
-							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
 						_1: {
 							ctor: '::',
 							_0: _elm_lang$html$Html_Events$onClick(
-								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
+								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
 							_1: {ctor: '[]'}
 						}
 					},
-					_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-edit')),
+					_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-eye')),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -10275,16 +10270,33 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) 
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$class(
-								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onClick(
-									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
+									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
 								_1: {ctor: '[]'}
 							}
 						},
-						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-check')),
-					_1: {ctor: '[]'}
+						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-edit')),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$button,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class(
+									A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
+									_1: {ctor: '[]'}
+								}
+							},
+							_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-check')),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
@@ -10438,6 +10450,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createView = F2(
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum2 = 'Pellentesque vel aliquam diam. Pellentesque tincidunt posuere libero at congue. Praesent vitae est ex. Cras mauris felis, sollicitudin eu quam non, rhoncus bibendum lectus. Nam id mattis est. Pellentesque pellentesque est elit, sed maximus massa sagittis in. Nullam non blandit neque, sed facilisis turpis. Fusce purus orci, auctor at posuere vel, pharetra at leo. Sed semper nec leo sed hendrerit. Quisque sollicitudin et dui in cursus. Donec vel libero feugiat, iaculis felis ac, condimentum metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Vestibulum iaculis mauris enim, cursus tincidunt velit aliquet sit amet. Maecenas ac mauris auctor, sollicitudin ante id, suscipit magna. Cras vel magna eget mauris sollicitudin suscipit in nec ipsum.';
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$defaultModel = {
+	ref: '000',
 	value: A2(
 		_elm_lang$core$Basics_ops['++'],
 		_flarebyte$bubblegum_ui_lab$TextAreaWidget$ipsum1,
@@ -10489,9 +10502,9 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = F2(
 				}
 			});
 	});
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F2(
-	function (a, b) {
-		return {value: a, editMode: b};
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Model = F3(
+	function (a, b, c) {
+		return {ref: a, value: b, editMode: c};
 	});
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$Config = F2(
 	function (a, b) {
@@ -18322,7 +18335,7 @@ var _flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder = F2(
 			{formBuilder: builder});
 	});
 var _flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn = _elm_lang$core$Basics$flip(_flarebyte$bubblegum_ui_lab$AppModel$setFormBuilder);
-var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing};
+var _flarebyte$bubblegum_ui_lab$AppModel$textAreaWidget = {value: '', editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing, ref: '101'};
 var _flarebyte$bubblegum_ui_lab$AppModel$inputWidget = {value: ''};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidgetHeader = {ctor: '_Tuple2', _0: '', _1: ' Please select a tag'};
 var _flarebyte$bubblegum_ui_lab$AppModel$tagWidget = {
