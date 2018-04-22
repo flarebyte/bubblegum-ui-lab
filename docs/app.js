@@ -10185,6 +10185,125 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
 			},
 			_elm_lang$core$String$lines(model.value)));
 };
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('control'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('tag is-info'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(
+										_elm_lang$core$Basics$toString(
+											_elm_lang$core$String$length(model.value))),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('tag is-dark'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('/200 chars'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('control'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('tag is-info'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											_elm_lang$core$Basics$toString(
+												_elm_lang$core$List$length(
+													_elm_lang$core$String$words(model.value)))),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$span,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('tag is-dark'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('/300 words'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton = function (model) {
 	var _p0 = model.editMode;
 	switch (_p0.ctor) {
@@ -10193,7 +10312,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton = function (mode
 				_elm_lang$html$Html$span,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_0: _elm_lang$html$Html_Attributes$class('button is-small'),
 					_1: {ctor: '[]'}
 				},
 				{
@@ -10206,7 +10325,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton = function (mode
 				_elm_lang$html$Html$span,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_0: _elm_lang$html$Html_Attributes$class('button is-small'),
 					_1: {ctor: '[]'}
 				},
 				{
@@ -10219,7 +10338,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton = function (mode
 				_elm_lang$html$Html$span,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_0: _elm_lang$html$Html_Attributes$class('button is-small'),
 					_1: {ctor: '[]'}
 				},
 				{
@@ -10417,7 +10536,11 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$createEdit = F2(
 							}
 						},
 						{ctor: '[]'}),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo(model),
+						_1: {ctor: '[]'}
+					}
 				}
 			});
 	});

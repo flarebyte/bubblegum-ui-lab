@@ -3,7 +3,7 @@ module TextAreaWidget exposing(create, Model, setTextArea, toggleMode)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, onMouseEnter, onMouseOut)
-import String exposing(lines)
+import String exposing(lines, words)
 import List
 import AppMsg exposing (..)
 import EditMode exposing(..)
@@ -93,6 +93,28 @@ checkEditMode model =
             (smallIcon  "fa-chevron-circle-right") 
         ]
 
+displayTextInfo: Model -> Html AppMsg
+displayTextInfo model =
+    div [ class "field is-grouped is-grouped-multiline" ]
+        [ div [ class "control" ]
+            [ div [ class "tags has-addons" ]
+                [ span [ class "tag is-info" ]
+                    [ text (String.length model.value |> toString) ]
+                , span [ class "tag is-dark" ]
+                    [ text "/ 200 chars" ]
+                ]
+            ]
+        , div [ class "control" ]
+            [ div [ class "tags has-addons" ]
+                [ span [ class "tag is-info" ]
+                    [ text (model.value |> words |> List.length |> toString) ]
+                , span [ class "tag is-dark" ]
+                    [ text "/ 300 words" ]
+                ]
+            ]
+
+        ]
+  
 renderText: Model -> Html AppMsg
 renderText model =
     model.value |> lines |> List.map (\line -> p [] [text line]) |> div []
@@ -107,7 +129,8 @@ createEdit  model id =
                 , value model.value
                 , attribute "rows" (model.value |> lines |> List.length |> (+) 1 |> toString )
                ]
-            [] 
+            []
+            , displayTextInfo model 
         ]       
 
 createView: Model -> Int -> Html AppMsg
