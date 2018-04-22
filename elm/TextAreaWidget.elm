@@ -93,6 +93,17 @@ checkEditMode model =
             (smallIcon  "fa-chevron-circle-right") 
         ]
 
+calculateRatio: Int -> Int -> Int
+calculateRatio target value =
+    (toFloat value / toFloat target ) * 100 |> round
+
+textInfoProgress: Model -> Html AppMsg
+textInfoProgress model =
+    let
+        ratio = model.value |> words |> List.length |> calculateRatio 40 |> toString
+    in
+        progress [ class "progress is-info", Html.Attributes.max "100", value ratio ][ text ( ratio ++ "%") ]
+
 displayTextInfo: Model -> Html AppMsg
 displayTextInfo model =
     div [ class "field is-grouped is-grouped-multiline" ]
@@ -112,6 +123,7 @@ displayTextInfo model =
                     [ text "/ 300 words" ]
                 ]
             ]
+        , textInfoProgress model    
 
         ]
   

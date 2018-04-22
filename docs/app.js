@@ -10185,6 +10185,40 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
 			},
 			_elm_lang$core$String$lines(model.value)));
 };
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$calculateRatio = F2(
+	function (target, value) {
+		return _elm_lang$core$Basics$round(
+			(_elm_lang$core$Basics$toFloat(value) / _elm_lang$core$Basics$toFloat(target)) * 100);
+	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$textInfoProgress = function (model) {
+	var ratio = _elm_lang$core$Basics$toString(
+		A2(
+			_flarebyte$bubblegum_ui_lab$TextAreaWidget$calculateRatio,
+			40,
+			_elm_lang$core$List$length(
+				_elm_lang$core$String$words(model.value))));
+	return A2(
+		_elm_lang$html$Html$progress,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('progress is-info'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$max('100'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$value(ratio),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				A2(_elm_lang$core$Basics_ops['++'], ratio, '%')),
+			_1: {ctor: '[]'}
+		});
+};
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -10238,7 +10272,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo = function (model
 									},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('/200 chars'),
+										_0: _elm_lang$html$Html$text('/ 200 chars'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -10292,7 +10326,7 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo = function (model
 										},
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('/300 words'),
+											_0: _elm_lang$html$Html$text('/ 300 words'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -10300,7 +10334,11 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$displayTextInfo = function (model
 							}),
 						_1: {ctor: '[]'}
 					}),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$textInfoProgress(model),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
