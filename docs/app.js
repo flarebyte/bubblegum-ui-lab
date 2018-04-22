@@ -9822,9 +9822,7 @@ var _flarebyte$bubblegum_ui_lab$EditMode$Viewing = {ctor: 'Viewing'};
 var _flarebyte$bubblegum_ui_lab$AppMsg$OnValidationError = function (a) {
 	return {ctor: 'OnValidationError', _0: a};
 };
-var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode = function (a) {
-	return {ctor: 'OnToggleTextAreaMode', _0: a};
-};
+var _flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode = {ctor: 'OnToggleTextAreaMode'};
 var _flarebyte$bubblegum_ui_lab$AppMsg$OnChangeTextArea = function (a) {
 	return {ctor: 'OnChangeTextArea', _0: a};
 };
@@ -10187,21 +10185,50 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$renderText = function (model) {
 			},
 			_elm_lang$core$String$lines(model.value)));
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToString = function (mode) {
-	var _p0 = mode;
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton = function (model) {
+	var _p0 = model.editMode;
 	switch (_p0.ctor) {
 		case 'Viewing':
-			return 'Viewing';
+			return A2(
+				_elm_lang$html$Html$span,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('A'),
+					_1: {ctor: '[]'}
+				});
 		case 'Editing':
-			return 'Editing';
+			return A2(
+				_elm_lang$html$Html$span,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('B'),
+					_1: {ctor: '[]'}
+				});
 		default:
-			return 'Suggesting';
+			return A2(
+				_elm_lang$html$Html$span,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('button is-small has-addons'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('C'),
+					_1: {ctor: '[]'}
+				});
 	}
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass = F4(
-	function (expected, whenExpected, otherwise, actual) {
-		return _elm_lang$core$Native_Utils.eq(actual, expected) ? whenExpected : otherwise;
-	});
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon = function (iconId) {
 	return {
 		ctor: '::',
@@ -10228,6 +10255,16 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon = function (iconId) {
 		_1: {ctor: '[]'}
 	};
 };
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$statusButton = function (model) {
+	return A2(
+		_elm_lang$html$Html$span,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('button is-danger is-small'),
+			_1: {ctor: '[]'}
+		},
+		_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-exclamation-triangle'));
+};
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) {
 	return A2(
 		_elm_lang$html$Html$span,
@@ -10238,75 +10275,46 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode = function (model) 
 		},
 		{
 			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$span,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class(
-						A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-danger is-selected is-small', 'button is-small', model.editMode)),
-					_1: {ctor: '[]'}
-				},
-				_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-exclamation-triangle')),
+			_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$statusButton(model),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$button,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class(
-							A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Viewing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Viewing)),
-							_1: {ctor: '[]'}
-						}
-					},
-					_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-eye')),
+				_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$actualModeButton(model),
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class(
-								A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Editing, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
+							_0: _elm_lang$html$Html_Attributes$class('button is-selected is-small'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(
-									_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Editing)),
+								_0: _elm_lang$html$Html_Events$onClick(_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode),
 								_1: {ctor: '[]'}
 							}
 						},
-						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-edit')),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$button,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class(
-									A4(_flarebyte$bubblegum_ui_lab$TextAreaWidget$editModeToClass, _flarebyte$bubblegum_ui_lab$EditMode$Suggesting, 'button is-success is-selected is-small', 'button is-small', model.editMode)),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_flarebyte$bubblegum_ui_lab$AppMsg$OnToggleTextAreaMode(_flarebyte$bubblegum_ui_lab$EditMode$Suggesting)),
-									_1: {ctor: '[]'}
-								}
-							},
-							_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-check')),
-						_1: {ctor: '[]'}
-					}
+						_flarebyte$bubblegum_ui_lab$TextAreaWidget$smallIcon('fa-chevron-circle-right')),
+					_1: {ctor: '[]'}
 				}
 			}
 		});
 };
-var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode = F2(
-	function (mode, model) {
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{editMode: mode});
-	});
+var _flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode = function (model) {
+	var _p1 = model.editMode;
+	switch (_p1.ctor) {
+		case 'Viewing':
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{editMode: _flarebyte$bubblegum_ui_lab$EditMode$Editing});
+		case 'Editing':
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{editMode: _flarebyte$bubblegum_ui_lab$EditMode$Suggesting});
+		default:
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{editMode: _flarebyte$bubblegum_ui_lab$EditMode$Viewing});
+	}
+};
 var _flarebyte$bubblegum_ui_lab$TextAreaWidget$setTextArea = F2(
 	function (text, model) {
 		return _elm_lang$core$Native_Utils.update(
@@ -10496,7 +10504,12 @@ var _flarebyte$bubblegum_ui_lab$TextAreaWidget$create = F2(
 						{
 							ctor: '::',
 							_0: _flarebyte$bubblegum_ui_lab$TextAreaWidget$checkEditMode(model),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(model.editMode)),
+								_1: {ctor: '[]'}
+							}
 						}),
 					_1: {ctor: '[]'}
 				}
@@ -18843,7 +18856,7 @@ var _flarebyte$bubblegum_ui_lab$App$update = F2(
 					A2(
 						_flarebyte$bubblegum_ui_lab$FormBuilder$asTextAreaWidgetIn,
 						model.formBuilder,
-						A2(_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode, _p0._0, model.formBuilder.textAreaWidget)));
+						_flarebyte$bubblegum_ui_lab$TextAreaWidget$toggleMode(model.formBuilder.textAreaWidget)));
 			default:
 				return A2(
 					_flarebyte$bubblegum_ui_lab$AppModel$asFormBuilderIn,

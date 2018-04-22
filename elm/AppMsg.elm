@@ -5,6 +5,6 @@ type AppMsg =
     OnAddTagValue String
     | OnDeleteTagValue String
     | OnChangeTextArea String
-    | OnToggleTextAreaMode EditMode
+    | OnToggleTextAreaMode
     | OnValidationError String
     

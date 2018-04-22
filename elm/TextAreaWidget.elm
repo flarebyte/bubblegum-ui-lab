@@ -7,6 +7,7 @@ import String exposing(lines)
 import List
 import AppMsg exposing (..)
 import EditMode exposing(..)
+import Debug
 
 type alias Model = {
     ref: String
@@ -48,9 +49,15 @@ setTextArea: String -> Model -> Model
 setTextArea text model=
     { model | value = text }
 
-toggleMode: EditMode -> Model -> Model
-toggleMode mode model=
-    { model | editMode = mode }
+toggleMode:  Model -> Model
+toggleMode model=
+    case model.editMode of
+        Viewing ->
+            { model | editMode = Editing }
+        Editing ->
+            { model | editMode = Suggesting }
+        Suggesting ->
+            { model | editMode = Viewing }
 
 smallIcon: String -> List (Html AppMsg)
 smallIcon iconId=
@@ -60,31 +67,30 @@ smallIcon iconId=
         ]
     ]
 
-editModeToClass:  EditMode -> String -> String -> EditMode -> String
-editModeToClass expected whenExpected otherwise actual  =
-    if actual == expected then
-        whenExpected
-    else
-        otherwise
 
-editModeToString: EditMode -> String
-editModeToString mode =
-    case mode of
-        Viewing -> "Viewing"
-        Editing -> "Editing"
-        Suggesting -> "Suggesting"
+statusButton: Model -> Html AppMsg
+statusButton model =
+    span [ class "button is-danger is-small" ] (smallIcon  "fa-exclamation-triangle")
+
+
+actualModeButton: Model -> Html AppMsg
+actualModeButton model =
+    case (model.editMode) of
+        Viewing ->
+            span [ class "button is-small" ] [text "A"]  -- (smallIcon  "fa-eye")
+        Editing ->
+            span [ class "button is-small" ] [text "B"] -- (smallIcon  "fa-edit")
+        Suggesting ->
+            span [ class "button is-small" ] [text "C"] -- (smallIcon  "fa-check")
+
 
 checkEditMode: Model -> Html AppMsg
 checkEditMode model =
     span [ class "buttons" ]
-        [ span [ class (editModeToClass Viewing "button is-danger is-selected is-small" "button is-small" model.editMode) ]
-            (smallIcon  "fa-exclamation-triangle")
-        , button [ class (editModeToClass Viewing "button is-success is-selected is-small" "button is-small" model.editMode) , onClick (OnToggleTextAreaMode Viewing) ]
-            (smallIcon  "fa-eye")
-        , button [ class (editModeToClass Editing "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Editing) ]
-            (smallIcon  "fa-edit")
-        , button [ class (editModeToClass Suggesting "button is-success is-selected is-small" "button is-small" model.editMode), onClick (OnToggleTextAreaMode Suggesting) ]
-            (smallIcon "fa-check")
+        [ statusButton model
+        , actualModeButton model
+        , button [ class "button is-selected is-small" , onClick OnToggleTextAreaMode ]
+            (smallIcon  "fa-chevron-circle-right") 
         ]
 
 renderText: Model -> Html AppMsg
@@ -129,5 +135,6 @@ create  model id=
     [ div [ class "column" ]
         [createContent model id]
     , div [ class "column is-1" ]
-        [ checkEditMode model ]
+        [ checkEditMode model,
+        text (toString model.editMode) ]
     ]

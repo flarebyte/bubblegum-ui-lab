@@ -48,8 +48,8 @@ update msg model =
       setTextArea value model.formBuilder.textAreaWidget 
       |> asTextAreaWidgetIn model.formBuilder
       |> asFormBuilderIn model
-    OnToggleTextAreaMode value ->
-      toggleMode value model.formBuilder.textAreaWidget 
+    OnToggleTextAreaMode ->
+      toggleMode model.formBuilder.textAreaWidget 
       |> asTextAreaWidgetIn model.formBuilder
       |> asFormBuilderIn model
     OnValidationError value ->
